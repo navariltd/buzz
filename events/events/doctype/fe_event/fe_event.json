@@ -276,9 +276,14 @@
    "group": "Ticketing",
    "link_doctype": "Bulk Ticket Coupon",
    "link_fieldname": "event"
+  },
+  {
+   "group": "General",
+   "link_doctype": "Additional Event Page",
+   "link_fieldname": "event"
   }
  ],
- "modified": "2025-09-07 17:28:25.683258",
+ "modified": "2025-09-25 18:54:59.797281",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "FE Event",
