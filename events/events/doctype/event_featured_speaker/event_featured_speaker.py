@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class SpeakerProfile(Document):
+class EventFeaturedSpeaker(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,15 +14,10 @@ class SpeakerProfile(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.social_media_link.social_media_link import SocialMediaLink
-
-		company: DF.Data | None
-		designation: DF.Data | None
-		display_image: DF.AttachImage | None
-		display_name: DF.Data | None
-		name: DF.Int | None
-		social_media_links: DF.Table[SocialMediaLink]
-		user: DF.Link
+		parent: DF.Data
+		parentfield: DF.Data
+		parenttype: DF.Data
+		speaker: DF.Link
 	# end: auto-generated types
 
 	pass

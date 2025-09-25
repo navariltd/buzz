@@ -14,6 +14,7 @@ class FEEvent(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
+		from events.events.doctype.event_featured_speaker.event_featured_speaker import EventFeaturedSpeaker
 		from events.events.doctype.schedule_item.schedule_item import ScheduleItem
 
 		about: DF.TextEditor | None
@@ -22,6 +23,7 @@ class FEEvent(Document):
 		end_date: DF.Date | None
 		end_time: DF.Time | None
 		external_registration_page: DF.Check
+		featured_speakers: DF.Table[EventFeaturedSpeaker]
 		host: DF.Link
 		is_published: DF.Check
 		medium: DF.Literal["In Person", "Online"]

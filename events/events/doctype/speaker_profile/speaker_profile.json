@@ -10,7 +10,6 @@
   "display_name",
   "column_break_dbuw",
   "display_image",
-  "featured",
   "section_break_kmlw",
   "designation",
   "column_break_azvu",
@@ -65,14 +64,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
-   "fieldname": "featured",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Featured?"
-  },
-  {
    "fieldname": "section_break_pvjm",
    "fieldtype": "Section Break"
   },
@@ -87,7 +78,7 @@
  "image_field": "display_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-29 19:36:55.724204",
+ "modified": "2025-09-25 19:03:36.807212",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Speaker Profile",
