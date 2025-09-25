@@ -1,8 +1,6 @@
 <template>
-	<div class="mb-6 text-ink-gray-6">
-		<RouterLink :to="{ name: 'bookings-list' }" class="hover:underline">
-			&larr; Back to Bookings
-		</RouterLink>
+	<div class="mb-6">
+		<BackButton :to="{ name: 'bookings-list' }" label="Back to Bookings" />
 	</div>
 
 	<h2 class="text-ink-gray-9 font-semibold text-lg mb-3">
@@ -11,6 +9,8 @@
 </template>
 
 <script setup>
+import BackButton from "./common/BackButton.vue";
+
 defineProps({
 	bookingId: {
 		type: String,

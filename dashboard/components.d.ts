@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AddOnPreferenceDialog: typeof import('./src/components/AddOnPreferenceDialog.vue')['default']
     AttendeeFormControl: typeof import('./src/components/AttendeeFormControl.vue')['default']
+    BackButton: typeof import('./src/components/common/BackButton.vue')['default']
     BookingEventInfo: typeof import('./src/components/BookingEventInfo.vue')['default']
     BookingFinancialSummary: typeof import('./src/components/BookingFinancialSummary.vue')['default']
     BookingForm: typeof import('./src/components/BookingForm.vue')['default']

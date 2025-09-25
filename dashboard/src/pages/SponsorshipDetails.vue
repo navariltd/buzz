@@ -1,8 +1,6 @@
 <template>
 	<div class="mb-6 flex items-center justify-between text-ink-gray-6">
-		<RouterLink :to="{ name: 'sponsorships-list' }" class="hover:underline">
-			&larr; Back to Sponsorships
-		</RouterLink>
+		<BackButton :to="{ name: 'sponsorships-list' }" label="Back to Sponsorships" />
 
 		<!-- Withdraw Button (show only if not paid and not withdrawn) -->
 		<Button
@@ -379,6 +377,7 @@ import LucideClock from "~icons/lucide/clock";
 import LucideXCircle from "~icons/lucide/x-circle";
 import SponsorshipPaymentDialog from "../components/SponsorshipPaymentDialog.vue";
 import { usePaymentSuccess } from "../composables/usePaymentSuccess.js";
+import BackButton from "../components/common/BackButton.vue";
 
 const props = defineProps({
 	enquiryId: {

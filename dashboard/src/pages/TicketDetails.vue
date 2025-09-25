@@ -1,8 +1,6 @@
 <template>
 	<div class="mb-6">
-		<RouterLink :to="{ name: 'tickets-list' }" class="hover:underline text-ink-gray-6">
-			&larr; Back to My Tickets
-		</RouterLink>
+		<BackButton :to="{ name: 'tickets-list' }" label="Back to My Tickets" />
 	</div>
 
 	<div class="w-4" v-if="ticketDetails.loading">
@@ -287,6 +285,7 @@ import LucideDownload from "~icons/lucide/download";
 import LucideUserPlus from "~icons/lucide/user-plus";
 import LucideEdit from "~icons/lucide/edit";
 import LucideTriangleAlert from "~icons/lucide/triangle-alert";
+import BackButton from "../components/common/BackButton.vue";
 
 const props = defineProps({
 	ticketId: {
