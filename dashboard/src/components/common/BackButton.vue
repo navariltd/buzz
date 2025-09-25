@@ -1,5 +1,5 @@
 <template>
-	<Button icon-left="chevron-left" :route="to">
+	<Button variant="ghost" icon-left="chevron-left" :route="to">
 		{{ label }}
 	</Button>
 </template>
