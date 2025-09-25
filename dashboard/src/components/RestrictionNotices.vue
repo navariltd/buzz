@@ -1,43 +1,23 @@
 <template>
 	<div>
-		<!-- Restriction notices -->
-		<div v-if="!canRequestCancellation && !cancellationRequest" class="mb-4">
-			<div class="bg-surface-red-1 border border-outline-red-1 rounded-lg p-4">
-				<div class="flex items-center">
-					<LucideTriangleAlert class="w-5 h-5 text-ink-red-2 mr-3" />
-					<div>
-						<p class="text-ink-red-3 text-sm">
-							<strong>Ticket cancellation requests are no longer available</strong>
-							- The cancellation window has closed as the event is approaching.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div v-if="!canTransferTickets" class="mb-4">
+		<!-- Single consolidated restriction notice -->
+		<div v-if="hasRestrictions" class="mb-4">
 			<div class="bg-surface-amber-1 border border-outline-amber-1 rounded-lg p-4">
-				<div class="flex items-center">
-					<LucideTriangleAlert class="w-5 h-5 text-ink-amber-2 mr-3" />
+				<div class="flex items-start">
+					<LucideTriangleAlert
+						class="w-5 h-5 text-ink-amber-2 mr-3 mt-0.5 flex-shrink-0"
+					/>
 					<div>
-						<p class="text-ink-amber-3 text-sm">
-							<strong>Ticket transfers are no longer available</strong> - The
-							transfer window has closed as the event is approaching.
+						<p class="text-ink-amber-3 text-sm font-medium mb-2">
+							Some options are no longer available as the event is approaching:
 						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div v-if="!canChangeAddOns" class="mb-4">
-			<div class="bg-surface-orange-1 border border-outline-orange-1 rounded-lg p-4">
-				<div class="flex items-center">
-					<LucideTriangleAlert class="w-5 h-5 text-ink-orange-1 mr-3" />
-					<div>
-						<p class="text-ink-orange-1 text-sm">
-							<strong>Add-on preference changes are no longer available</strong>
-							- The change window has closed as the event is approaching.
-						</p>
+						<ul class="text-ink-amber-3 text-sm space-y-1 list-disc list-inside">
+							<li v-if="!canRequestCancellation && !cancellationRequest">
+								Ticket cancellation requests
+							</li>
+							<li v-if="!canTransferTickets">Ticket transfers</li>
+							<li v-if="!canChangeAddOns">Add-on preference changes</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -46,9 +26,10 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 import LucideTriangleAlert from "~icons/lucide/triangle-alert";
 
-defineProps({
+const props = defineProps({
 	canRequestCancellation: {
 		type: Boolean,
 		default: false,
@@ -65,5 +46,14 @@ defineProps({
 		type: Object,
 		default: null,
 	},
+});
+
+// Computed property to check if any restrictions exist
+const hasRestrictions = computed(() => {
+	return (
+		(!props.canRequestCancellation && !props.cancellationRequest) ||
+		!props.canTransferTickets ||
+		!props.canChangeAddOns
+	);
 });
 </script>

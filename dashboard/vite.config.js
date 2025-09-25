@@ -29,7 +29,7 @@ export default defineConfig(async ({ command, mode }) => {
 			frappeui({
 				frappeProxy: {
 					port: 8080,
-					source: "^/(app|login|api|assets|files|private|razorpay_checkout)",
+					source: "^/(app|login|api|assets|files|private|razorpay_checkout|events)",
 				},
 				jinjaBootData: true,
 				lucideIcons: true,

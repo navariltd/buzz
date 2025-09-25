@@ -19,8 +19,6 @@ declare module 'vue' {
     CancellationRequestNotice: typeof import('./src/components/CancellationRequestNotice.vue')['default']
     EventDetailsHeader: typeof import('./src/components/EventDetailsHeader.vue')['default']
     EventSponsorForm: typeof import('./src/components/EventSponsorForm.vue')['default']
-    LucideMoon: typeof import('~icons/lucide/moon')['default']
-    LucideSun: typeof import('~icons/lucide/sun')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     ProfileView: typeof import('./src/components/ProfileView.vue')['default']
     RestrictionNotices: typeof import('./src/components/RestrictionNotices.vue')['default']
