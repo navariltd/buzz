@@ -1,6 +1,16 @@
 <template>
 	<div class="bg-surface-cards border border-outline-gray-1 rounded-lg p-6">
-		<h3 class="text-lg font-semibold text-ink-gray-9 mb-4">{{ event.title }}</h3>
+		<div class="mb-8 flex items-center justify-between">
+			<h3 class="text-lg font-semibold text-ink-gray-9">{{ event.title }}</h3>
+
+			<Button
+				:link="`/events/${event.route}`"
+				icon-left="external-link"
+				variant="subtle"
+				size="sm"
+				>Visit Event Page
+			</Button>
+		</div>
 
 		<div class="space-y-3">
 			<!-- Date & Time -->
