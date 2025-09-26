@@ -8,7 +8,7 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        files: "events.*"
+        files: "buzz.*"
         exclude: ".*json$|.*txt$|.*csv|.*md|.*svg"
       - id: check-merge-conflict
       - id: check-ast
@@ -38,11 +38,11 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                events/public/dist/.*|
+                buzz/public/dist/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                events/templates/includes/.*|
-                events/public/js/lib/.*
+                buzz/templates/includes/.*|
+                buzz/public/js/lib/.*
             )$
 
 
@@ -55,12 +55,12 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                events/public/dist/.*|
+                buzz/public/dist/.*|
                 cypress/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                events/templates/includes/.*|
-                events/public/js/lib/.*
+                buzz/templates/includes/.*|
+                buzz/public/js/lib/.*
             )$
 
 ci:

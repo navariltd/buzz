@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-from events.payments import mark_payment_as_received
+from buzz.payments import mark_payment_as_received
 
 
 class SponsorshipEnquiry(Document):

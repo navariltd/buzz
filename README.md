@@ -1,10 +1,10 @@
 
 
 <div style="text-align: center;">
-  <a href="https://github.com/BuildWithHussain/events/actions/workflows/ci.yml"><img src="https://github.com/BuildWithHussain/events/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
-  <a href="https://github.com/BuildWithHussain/events/stargazers"><img src="https://img.shields.io/github/stars/BuildWithHussain/events?style=social" alt="GitHub stars"></a>
+  <a href="https://github.com/BuildWithHussain/buzz/actions/workflows/ci.yml"><img src="https://github.com/BuildWithHussain/buzz/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/BuildWithHussain/buzz/stargazers"><img src="https://img.shields.io/github/stars/BuildWithHussain/buzz?style=social" alt="GitHub stars"></a>
   <a href="https://www.gnu.org/licenses/agpl-3.0"><img src="https://img.shields.io/badge/License-AGPL_v3-blue.svg" alt="License: AGPL v3"></a>
-  <a href="https://github.com/BuildWithHussain/events/commits/main"><img src="https://img.shields.io/github/commit-activity/m/BuildWithHussain/events" alt="GitHub commit activity"></a>
+  <a href="https://github.com/BuildWithHussain/buzz/commits/main"><img src="https://img.shields.io/github/commit-activity/m/BuildWithHussain/buzz" alt="GitHub commit activity"></a>
 </div>
 
 ![FE Event DocType](.github/images/fe-event-main-form.png)
@@ -67,8 +67,8 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch main
-bench install-app events
+bench get-app BuildWithHussain/buzz --branch main
+bench install-app buzz
 ```
 
 ### Contributing
@@ -76,7 +76,7 @@ bench install-app events
 This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
 
 ```bash
-cd apps/events
+cd apps/buzz
 pre-commit install
 ```
 

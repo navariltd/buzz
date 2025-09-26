@@ -4,10 +4,8 @@
 # import frappe
 from frappe.model.document import Document
 
-from events.payments import mark_payment_as_received
 
-
-class SponsorshipTier(Document):
+class SpeakerProfile(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -16,10 +14,15 @@ class SponsorshipTier(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		currency: DF.Link | None
-		event: DF.Link
-		price: DF.Currency
-		title: DF.Data
+		from buzz.events.doctype.social_media_link.social_media_link import SocialMediaLink
+
+		company: DF.Data | None
+		designation: DF.Data | None
+		display_image: DF.AttachImage | None
+		display_name: DF.Data | None
+		name: DF.Int | None
+		social_media_links: DF.Table[SocialMediaLink]
+		user: DF.Link
 	# end: auto-generated types
 
 	pass

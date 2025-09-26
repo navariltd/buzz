@@ -1,5 +1,5 @@
 {
-  "name": "events",
+  "name": "buzz-frappe-app",
   "version": "1.0.0",
   "description": "Event Management App built on Frappe",
   "main": "index.js",
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BuildWithHussain/events.git"
+    "url": "git+https://github.com/BuildWithHussain/buzz.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BuildWithHussain/events/issues"
+    "url": "https://github.com/BuildWithHussain/buzz/issues"
   },
-  "homepage": "https://github.com/BuildWithHussain/events#readme"
+  "homepage": "https://github.com/BuildWithHussain/buzz#readme"
 }

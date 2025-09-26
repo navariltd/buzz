@@ -6,7 +6,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
-from events.payments import mark_payment_as_received
+from buzz.payments import mark_payment_as_received
 
 
 class EventBooking(Document):
@@ -18,7 +18,7 @@ class EventBooking(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
+		from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
 			EventBookingAttendee,
 		)
 

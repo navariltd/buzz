@@ -1,7 +1,7 @@
 import frappe
 from frappe.utils import days_diff, format_date, format_time, today
 
-from events.payments import get_payment_link_for_booking
+from buzz.payments import get_payment_link_for_booking
 
 
 def is_ticket_transfer_allowed(event_id: str | int) -> bool:
@@ -513,7 +513,7 @@ def get_user_sponsorship_inquiries() -> list:
 @frappe.whitelist()
 def create_sponsorship_payment_link(enquiry_id: str, tier_id: str) -> str:
 	"""Create a payment link for a sponsorship enquiry with selected tier."""
-	from events.payments import get_payment_link_for_sponsorship
+	from buzz.payments import get_payment_link_for_sponsorship
 
 	# Verify the enquiry belongs to the current user
 	enquiry = frappe.get_doc("Sponsorship Enquiry", enquiry_id)

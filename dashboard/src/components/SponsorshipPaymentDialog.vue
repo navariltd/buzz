@@ -157,7 +157,7 @@ const tiers = useList({
 
 // Resource to create payment link
 const paymentLink = createResource({
-	url: "events.api.create_sponsorship_payment_link",
+	url: "buzz.api.create_sponsorship_payment_link",
 	onSuccess: (paymentUrl) => {
 		emit("payment-started");
 		closeDialog();

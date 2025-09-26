@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class SpeakerProfile(Document):
+class TalkProposal(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,15 +14,14 @@ class SpeakerProfile(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.social_media_link.social_media_link import SocialMediaLink
+		from buzz.events.doctype.proposal_speaker.proposal_speaker import ProposalSpeaker
 
-		company: DF.Data | None
-		designation: DF.Data | None
-		display_image: DF.AttachImage | None
-		display_name: DF.Data | None
-		name: DF.Int | None
-		social_media_links: DF.Table[SocialMediaLink]
-		user: DF.Link
+		description: DF.TextEditor | None
+		event: DF.Link
+		speakers: DF.Table[ProposalSpeaker]
+		status: DF.Literal["Review Pending", "Shortlisted", "Approved", "Rejected"]
+		submitted_by: DF.Link
+		title: DF.Data
 	# end: auto-generated types
 
 	pass

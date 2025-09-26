@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class EventTalk(Document):
+class EventHost(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,11 +14,14 @@ class EventTalk(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.talk_speaker.talk_speaker import TalkSpeaker
+		from buzz.events.doctype.social_media_link.social_media_link import SocialMediaLink
 
-		name: DF.Int | None
-		speakers: DF.Table[TalkSpeaker]
-		title: DF.Data
+		about: DF.TextEditor | None
+		address: DF.SmallText | None
+		by_line: DF.Data | None
+		country: DF.Link | None
+		logo: DF.AttachImage | None
+		social_media_links: DF.Table[SocialMediaLink]
 	# end: auto-generated types
 
 	pass

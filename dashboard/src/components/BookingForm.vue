@@ -247,7 +247,7 @@ watch(
 );
 
 const processBooking = createResource({
-	url: "events.api.process_booking",
+	url: "buzz.api.process_booking",
 });
 
 // --- FORM SUBMISSION ---

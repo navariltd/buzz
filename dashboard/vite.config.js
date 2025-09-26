@@ -34,10 +34,10 @@ export default defineConfig(async ({ command, mode }) => {
 				jinjaBootData: true,
 				lucideIcons: true,
 				buildConfig: {
-					indexHtmlPath: "../events/www/dashboard.html",
+					indexHtmlPath: "../buzz/www/dashboard.html",
 					emptyOutDir: true,
 					sourcemap: true,
-					outDir: "../events/public/dashboard",
+					outDir: "../buzz/public/dashboard",
 					chunkSizeWarningLimit: 1500,
 					target: "es2015",
 				},

@@ -33,7 +33,7 @@ const props = defineProps({
 });
 
 const eventBookingResource = createResource({
-	url: "events.api.get_event_booking_data",
+	url: "buzz.api.get_event_booking_data",
 	params: {
 		event_route: props.eventRoute,
 	},

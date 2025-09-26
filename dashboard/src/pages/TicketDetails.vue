@@ -318,7 +318,7 @@ const showTransferDialog = ref(false);
 const showAddOnPreferenceDialog = ref(false);
 
 const ticketDetails = createResource({
-	url: "events.api.get_ticket_details",
+	url: "buzz.api.get_ticket_details",
 	params: { ticket_id: props.ticketId },
 	auto: true,
 	transform(data) {
@@ -432,7 +432,7 @@ const downloadTicket = async () => {
 		// This would typically call an API endpoint that generates a PDF ticket
 		console.log("Downloading ticket:", props.ticketId);
 		// await createResource({
-		//   url: "events.api.download_ticket",
+		//   url: "buzz.api.download_ticket",
 		//   params: { ticket_id: props.ticketId }
 		// }).fetch();
 	} catch (error) {

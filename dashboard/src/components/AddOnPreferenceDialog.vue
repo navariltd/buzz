@@ -110,7 +110,7 @@ watch(
 );
 
 const savePreferences = createResource({
-	url: "events.api.change_add_on_preference",
+	url: "buzz.api.change_add_on_preference",
 	onSuccess: () => {
 		toast.success("Add-on preferences updated successfully!");
 		emit("success");

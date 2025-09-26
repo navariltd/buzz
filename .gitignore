@@ -54,6 +54,6 @@ jspm_packages/
 # Aider AI Chat
 .aider*
 
-events/public/dashboard/
-events/public/node_modules
-events/www/dashboard.html
+buzz/public/dashboard/
+buzz/public/node_modules
+buzz/www/dashboard.html

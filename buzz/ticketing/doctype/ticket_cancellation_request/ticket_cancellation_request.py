@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class EventHost(Document):
+class TicketCancellationRequest(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,14 +14,13 @@ class EventHost(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.social_media_link.social_media_link import SocialMediaLink
+		from buzz.ticketing.doctype.ticket_cancellation_item.ticket_cancellation_item import (
+			TicketCancellationItem,
+		)
 
-		about: DF.TextEditor | None
-		address: DF.SmallText | None
-		by_line: DF.Data | None
-		country: DF.Link | None
-		logo: DF.AttachImage | None
-		social_media_links: DF.Table[SocialMediaLink]
+		booking: DF.Link
+		cancel_full_booking: DF.Check
+		tickets: DF.Table[TicketCancellationItem]
 	# end: auto-generated types
 
 	pass

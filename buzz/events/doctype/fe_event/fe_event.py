@@ -14,8 +14,8 @@ class FEEvent(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.event_featured_speaker.event_featured_speaker import EventFeaturedSpeaker
-		from events.events.doctype.schedule_item.schedule_item import ScheduleItem
+		from buzz.events.doctype.event_featured_speaker.event_featured_speaker import EventFeaturedSpeaker
+		from buzz.events.doctype.schedule_item.schedule_item import ScheduleItem
 
 		about: DF.TextEditor | None
 		banner_image: DF.AttachImage | None

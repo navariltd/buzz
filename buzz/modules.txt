@@ -1,3 +1,4 @@
+Buzz
 Events
 Ticketing
 Proposals

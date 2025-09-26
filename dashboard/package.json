@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/assets/events/dashboard/ && yarn copy-html-entry",
+    "build": "vite build --base=/assets/buzz/dashboard/ && yarn copy-html-entry",
     "preview": "vite preview",
     "lint": "biome check --write .",
-    "copy-html-entry": "cp ../events/public/dashboard/index.html ../events/www/dashboard.html"
+    "copy-html-entry": "cp ../buzz/public/dashboard/index.html ../buzz/www/dashboard.html"
   },
   "dependencies": {
     "@vueuse/core": "^13.6.0",

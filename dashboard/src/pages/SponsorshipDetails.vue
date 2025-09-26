@@ -390,7 +390,7 @@ const showPaymentDialog = ref(false);
 const showWithdrawDialog = ref(false);
 
 const enquiryDetails = createResource({
-	url: "events.api.get_sponsorship_details",
+	url: "buzz.api.get_sponsorship_details",
 	params: {
 		enquiry_id: props.enquiryId,
 	},
@@ -399,7 +399,7 @@ const enquiryDetails = createResource({
 
 // Resource to withdraw sponsorship inquiry
 const withdrawResource = createResource({
-	url: "events.api.withdraw_sponsorship_enquiry",
+	url: "buzz.api.withdraw_sponsorship_enquiry",
 	makeParams() {
 		return {
 			enquiry_id: props.enquiryId,

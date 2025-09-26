@@ -4,8 +4,10 @@
 # import frappe
 from frappe.model.document import Document
 
+from buzz.payments import mark_payment_as_received
 
-class TalkProposal(Document):
+
+class SponsorshipTier(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,13 +16,9 @@ class TalkProposal(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.events.doctype.proposal_speaker.proposal_speaker import ProposalSpeaker
-
-		description: DF.TextEditor | None
+		currency: DF.Link | None
 		event: DF.Link
-		speakers: DF.Table[ProposalSpeaker]
-		status: DF.Literal["Review Pending", "Shortlisted", "Approved", "Rejected"]
-		submitted_by: DF.Link
+		price: DF.Currency
 		title: DF.Data
 	# end: auto-generated types
 

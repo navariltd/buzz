@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class TicketCancellationRequest(Document):
+class EventTalk(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,13 +14,11 @@ class TicketCancellationRequest(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		from events.ticketing.doctype.ticket_cancellation_item.ticket_cancellation_item import (
-			TicketCancellationItem,
-		)
+		from buzz.events.doctype.talk_speaker.talk_speaker import TalkSpeaker
 
-		booking: DF.Link
-		cancel_full_booking: DF.Check
-		tickets: DF.Table[TicketCancellationItem]
+		name: DF.Int | None
+		speakers: DF.Table[TalkSpeaker]
+		title: DF.Data
 	# end: auto-generated types
 
 	pass
