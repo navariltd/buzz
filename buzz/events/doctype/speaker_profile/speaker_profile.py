@@ -12,17 +12,16 @@ class SpeakerProfile(Document):
 	from typing import TYPE_CHECKING
 
 	if TYPE_CHECKING:
-		from frappe.types import DF
-
 		from buzz.events.doctype.social_media_link.social_media_link import SocialMediaLink
+		from frappe.types import DF
 
 		company: DF.Data | None
 		designation: DF.Data | None
 		display_image: DF.AttachImage | None
-		display_name: DF.Data | None
+		display_name: DF.Data
+		full_name: DF.Data
 		name: DF.Int | None
 		social_media_links: DF.Table[SocialMediaLink]
-		user: DF.Link
 	# end: auto-generated types
 
 	pass
