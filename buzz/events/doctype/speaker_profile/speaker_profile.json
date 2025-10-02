@@ -1,13 +1,12 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "autoincrement",
  "creation": "2025-07-19 11:58:20.573125",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "user",
   "display_name",
+  "full_name",
   "column_break_dbuw",
   "display_image",
   "section_break_kmlw",
@@ -19,24 +18,17 @@
  ],
  "fields": [
   {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "User",
-   "options": "User",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_dbuw",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "user.full_name",
    "fieldname": "display_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Display Name"
+   "label": "Email",
+   "options": "Email",
+   "reqd": 1
   },
   {
    "fieldname": "designation",
@@ -72,13 +64,20 @@
    "fieldtype": "Table",
    "label": "Social Media Links",
    "options": "Social Media Link"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "image_field": "display_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-25 19:03:36.807212",
+ "modified": "2025-10-02 13:14:49.536365",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Speaker Profile",
@@ -116,5 +115,5 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "display_name"
+ "title_field": "full_name"
 }
