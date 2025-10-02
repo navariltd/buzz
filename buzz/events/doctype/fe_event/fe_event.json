@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "autoincrement",
  "creation": "2025-07-19 11:28:39.634220",
  "doctype": "DocType",
@@ -9,10 +8,12 @@
   "title",
   "category",
   "medium",
+  "event_access",
   "column_break_cxqh",
   "banner_image",
   "host",
   "venue",
+  "is_ticketed",
   "section_break_naqe",
   "start_date",
   "start_time",
@@ -228,6 +229,21 @@
    "fieldtype": "Table",
    "label": "Featured Speakers",
    "options": "Event Featured Speaker"
+  },
+  {
+   "fieldname": "event_access",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Access",
+   "options": "Public\nPrivate\nMembers Only",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_ticketed",
+   "fieldtype": "Check",
+   "label": "Is Ticketed"
   }
  ],
  "grid_page_length": 50,
@@ -293,9 +309,14 @@
    "group": "General",
    "link_doctype": "Additional Event Page",
    "link_fieldname": "event"
+  },
+  {
+   "group": "Event Registration",
+   "link_doctype": "Attendee Registration",
+   "link_fieldname": "event"
   }
  ],
- "modified": "2025-09-25 19:05:18.648873",
+ "modified": "2025-10-02 08:03:36.152216",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "FE Event",
