@@ -7,6 +7,11 @@
  "engine": "InnoDB",
  "field_order": [
   "address",
+  "column_break_kqaw",
+  "section_break_cexp",
+  "longitude",
+  "latitude",
+  "column_break_xfsv",
   "location"
  ],
  "fields": [
@@ -20,13 +25,38 @@
   {
    "fieldname": "location",
    "fieldtype": "Geolocation",
-   "label": "Location"
+   "label": "Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kqaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cexp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "column_break_xfsv",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-29 19:37:10.628647",
+ "modified": "2025-10-07 17:25:44.722537",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Venue",
