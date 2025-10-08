@@ -29,6 +29,7 @@ class FEEvent(Document):
 		is_published: DF.Check
 		is_ticketed: DF.Check
 		medium: DF.Literal["In Person", "Online"]
+		mode_of_payment: DF.Link | None
 		name: DF.Int | None
 		payment_gateway: DF.Link | None
 		registration_url: DF.Data | None
