@@ -55,7 +55,7 @@
 			/>
 			<!-- Show static info if only one ticket type -->
 			<div v-else-if="availableTicketTypes.length === 1" class="space-y-1">
-				<label class="block text-sm font-medium text-ink-gray-7">Ticket Type</label>
+				<label class="block text-sm font-medium text-ink-gray-7 mb-3">Ticket Type</label>
 				<div class="text-base font-medium text-ink-gray-9">
 					{{ availableTicketTypes[0].title }}
 					<span class="text-ink-gray-6">({{ formatPriceOrFree(availableTicketTypes[0].price, availableTicketTypes[0].currency) }})</span>
