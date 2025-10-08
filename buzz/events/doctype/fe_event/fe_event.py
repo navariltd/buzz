@@ -19,6 +19,7 @@ class FEEvent(Document):
 		about: DF.TextEditor | None
 		banner_image: DF.AttachImage | None
 		category: DF.Link
+		company: DF.Link
 		end_date: DF.Date | None
 		end_time: DF.Time | None
 		event_access: DF.Literal["Public", "Private", "Members Only"]
