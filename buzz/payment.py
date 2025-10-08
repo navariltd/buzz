@@ -47,11 +47,12 @@ def create_customer(user_details):
 
 def make_payment_request(customer, event_booking, phone_number=None):
     try:
-        invoice = frappe.db.get_value(
+        invoice_id = frappe.db.get_value(
             "Sales Invoice",
             {"event_booking": event_booking.name, "docstatus": ["!=", 2]},
             "name",
         )
+        invoice = frappe.get_doc("Sales Invoice", invoice_id)
         payment_gateway = get_payment_gateway_from_mop(
             event_booking.mode_of_payment, event_booking.company
         )
@@ -69,10 +70,11 @@ def make_payment_request(customer, event_booking, phone_number=None):
                 "status": "Initiated",
                 "party": customer.name,
                 "reference_doctype": "Sales Invoice",
-                "reference_name": invoice,
+                "reference_name": invoice.name,
                 "mode_of_payment": event_booking.mode_of_payment,
                 "payment_gateway": payment_gateway,
                 "payment_gateway_account": payment_gateway_account,
+                "outstanding_amount": invoice.outstanding_amount,
                 "currency": event_booking.currency,
                 "grand_total": event_booking.total_amount,
                 "email_to": customer.email_id,
