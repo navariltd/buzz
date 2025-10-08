@@ -51,7 +51,7 @@
 								type="submit"
 								:loading="processBooking.loading"
 							>
-								{{ processBooking.loading ? "Processing..." : "Pay & Book" }}
+								{{ processBooking.loading ? "Processing..." : (finalTotal > 0 ? "Pay & Book" : "Book Tickets") }}
 							</Button>
 						</div>
 					</div>
@@ -112,7 +112,8 @@ const createNewAttendee = () => {
 		id: attendeeIdCounter.value,
 		full_name: "",
 		email: "",
-		ticket_type: props.availableTicketTypes[0]?.name || "",
+		// Auto-select ticket type if there's only one available
+		ticket_type: props.availableTicketTypes.length === 1 ? props.availableTicketTypes[0]?.name : (props.availableTicketTypes[0]?.name || ""),
 		add_ons: {},
 	};
 	for (const addOn of props.availableAddOns) {
@@ -244,6 +245,22 @@ watch(
 		}
 	},
 	{ immediate: true, deep: true }
+);
+
+// Auto-select ticket type if there's only one available
+watch(
+	() => props.availableTicketTypes,
+	(newTicketTypes) => {
+		if (newTicketTypes && newTicketTypes.length === 1) {
+			// Auto-select the only ticket type for all attendees
+			for (const attendee of attendees.value) {
+				if (!attendee.ticket_type || attendee.ticket_type === "") {
+					attendee.ticket_type = newTicketTypes[0].name;
+				}
+			}
+		}
+	},
+	{ immediate: true }
 );
 
 const processBooking = createResource({

@@ -40,17 +40,27 @@
 
 		<!-- Ticket Type -->
 		<div class="mb-4">
+			<!-- Show selector only if there are multiple ticket types -->
 			<FormControl
+				v-if="availableTicketTypes.length > 1"
 				v-model="attendee.ticket_type"
 				label="Ticket Type"
 				type="select"
 				:options="
 					availableTicketTypes.map((tt) => ({
-						label: `${tt.title} (${formatPrice(tt.price, tt.currency)})`,
+						label: `${tt.title} (${formatPriceOrFree(tt.price, tt.currency)})`,
 						value: tt.name,
 					}))
 				"
 			/>
+			<!-- Show static info if only one ticket type -->
+			<div v-else-if="availableTicketTypes.length === 1" class="space-y-1">
+				<label class="block text-sm font-medium text-ink-gray-7">Ticket Type</label>
+				<div class="text-base font-medium text-ink-gray-9">
+					{{ availableTicketTypes[0].title }}
+					<span class="text-ink-gray-6">({{ formatPriceOrFree(availableTicketTypes[0].price, availableTicketTypes[0].currency) }})</span>
+				</div>
+			</div>
 		</div>
 
 		<!-- Add-ons -->
@@ -63,7 +73,7 @@
 						:model-value="getAddOnSelected(addOn.name)"
 						@update:model-value="updateAddOnSelection(addOn.name, $event)"
 						:id="`add_on_${addOn.name}_${index}`"
-						:label="`${addOn.title} (${formatPrice(addOn.price, addOn.currency)})`"
+						:label="`${addOn.title} (${formatPriceOrFree(addOn.price, addOn.currency)})`"
 					/>
 				</div>
 
@@ -88,7 +98,7 @@
 
 <script setup>
 import { Tooltip } from "frappe-ui";
-import { formatPrice } from "../utils/currency.js";
+import { formatPrice, formatPriceOrFree } from "../utils/currency.js";
 
 const props = defineProps({
 	attendee: { type: Object, required: true },

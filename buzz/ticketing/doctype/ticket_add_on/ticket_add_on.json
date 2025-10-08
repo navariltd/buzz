@@ -8,6 +8,7 @@
   "title",
   "event",
   "price",
+  "description",
   "column_break_lbak",
   "currency",
   "user_selects_option",
@@ -58,12 +59,17 @@
    "fieldname": "user_selects_option",
    "fieldtype": "Check",
    "label": "User Selects Option?"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-26 12:54:26.587785",
+ "modified": "2025-10-08 16:39:29.863052",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Ticket Add-on",
