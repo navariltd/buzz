@@ -6,50 +6,13 @@ from erpnext.accounts.doctype.payment_entry.payment_entry import (
 )
 
 
-@frappe.whitelist()
-def initialize_payment(event_booking):
-    try:
-        event_booking = frappe.get_doc("Event Booking", event_booking)
-
-        user = frappe.get_doc("User", frappe.session.user)
-
-        user_details = frappe._dict(
-            {
-                "fullname": user.full_name,
-                "email": user.email,
-                "mobile": user.phone,
-            }
-        )
-
-        customer = frappe.db.exists("Customer", {"email_id": user.email})
-
-        if customer:
-            customer = frappe.get_doc("Customer", customer)
-        else:
-            customer = create_customer(user_details)
-            customer = frappe.get_doc("Customer", customer)
-
-        payment_request = make_payment_request(customer, event_booking)
-
-    except Exception as e:
-        frappe.log_error(frappe.get_traceback(), _("Payment Initialization Failed"))
-        frappe.throw(
-            frappe._(
-                "There was an error in processing your payment. Please contact support."
-            )
-        )
-
-    return payment_request
-
-
 def create_customer(user_details):
     customer = frappe.new_doc("Customer")
     customer.customer_name = user_details.fullname
     customer.customer_type = "Individual"
-    customer.customer_group = frappe.db.get_single_value(
-        "Selling Settings", "customer_group"
-    )
-    customer.territory = frappe.db.get_single_value("Selling Settings", "territory")
+    customer.email_id = user_details.email
+    customer.mobile_no = user_details.mobile
+
     customer.flags.ignore_mandatory = True
     customer.insert(ignore_permissions=True)
 
@@ -82,7 +45,7 @@ def create_customer(user_details):
     return customer.name
 
 
-def make_payment_request(customer, event_booking):
+def make_payment_request(customer, event_booking, phone_number=None):
     try:
         payment_request = frappe.get_doc(
             {
@@ -94,17 +57,21 @@ def make_payment_request(customer, event_booking):
                 "party": customer.name,
                 "reference_doctype": "Event Booking",
                 "reference_name": event_booking.name,
+                "payment_gateway": event_booking.payment_gateway,
                 "currency": event_booking.currency,
-                "grand_total": event_booking.amount,
+                "grand_total": event_booking.total_amount,
                 "email_to": customer.email_id,
                 "subject": _("Payment Request for {0} Event Booking").format(
                     event_booking.name
                 ),
                 "message": _("Please pay {0} {1} to renew your event booking.").format(
-                    event_booking.currency, event_booking.amount
+                    event_booking.currency, event_booking.total_amount
                 ),
             }
         )
+
+        if phone_number:
+            payment_request.phone_number = phone_number
 
         payment_request.flags.ignore_validate = True
         payment_request.insert(ignore_permissions=True)
@@ -124,29 +91,15 @@ def make_payment_request(customer, event_booking):
     return payment_request
 
 
-@frappe.whitelist()
-def generate_invoice(event_booking, customer):
-
-    try:
-
-        invoice = make_invoice(event_booking, customer)
-
-        make_payment_entry(event_booking, invoice)
-
-    except Exception as e:
-        frappe.log_error(
-            frappe.get_traceback(),
-            f"Invoice Creation Failed for customer {customer.name}",
-        )
-        frappe.throw(
-            frappe._(
-                "There was an error in processing your invoice. Please contact support."
-            )
-        )
-
-
 def make_invoice(event_booking, customer):
     try:
+
+        company = frappe.get_doc("Company", event_booking.company)
+
+        # Get defaults from Company
+        default_income_account = company.default_income_account
+        default_expense_account = company.default_expense_account
+        default_cost_center = company.cost_center
 
         invoice_items = []
 
@@ -156,6 +109,13 @@ def make_invoice(event_booking, customer):
                 "Event Ticket Type", ticket_type, "linked_item"
             )
             if linked_item:
+                # Get item doc to fetch its defaults
+                item = frappe.get_doc("Item", linked_item)
+
+                income_account = item.get("income_account") or default_income_account
+                expense_account = item.get("expense_account") or default_expense_account
+                cost_center = item.get("cost_center") or default_cost_center
+
                 event_booking.item_code = linked_item
                 event_booking.qty = 1
                 event_booking.rate = frappe.db.get_value(
@@ -167,6 +127,9 @@ def make_invoice(event_booking, customer):
                         "item_code": linked_item,
                         "qty": 1,
                         "rate": event_booking.rate,
+                        "income_account": income_account,
+                        "expense_account": expense_account,
+                        "cost_center": cost_center,
                     }
                 )
             else:
@@ -174,13 +137,18 @@ def make_invoice(event_booking, customer):
                     frappe._(f"Please set Linked Item for Ticket Type {ticket_type}")
                 )
 
-        invoice = frappe.new_doc("Sales Invoice")
-        invoice.customer = customer.name
-        invoice.currency = event_booking.currency
-        invoice.company = event_booking.company
-        invoice.items = invoice_items
+        invoice = frappe.get_doc(
+            {
+                "doctype": "Sales Invoice",
+                "customer": customer.name,
+                "currency": event_booking.currency,
+                "company": event_booking.company,
+                "items": invoice_items,
+            }
+        )
+        invoice.set_missing_values()
+
         invoice.insert(ignore_permissions=True)
-        invoice.submit()
     except Exception as e:
         frappe.log_error(
             frappe.get_traceback(),
