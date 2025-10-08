@@ -10,6 +10,7 @@
   "column_break_cjxu",
   "user",
   "customer",
+  "mode_of_payment",
   "payment_gateway",
   "section_break_xvkp",
   "attendees",
@@ -134,8 +135,16 @@
    "allow_on_submit": 1,
    "fieldname": "payment_gateway",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Payment Gateway",
    "options": "Payment Gateway"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
@@ -159,7 +168,7 @@
    "link_fieldname": "event_booking"
   }
  ],
- "modified": "2025-10-08 13:18:31.573180",
+ "modified": "2025-10-08 14:56:28.971795",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Booking",
