@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "autoincrement",
  "creation": "2025-07-22 19:49:59.242064",
  "doctype": "DocType",
@@ -9,8 +8,10 @@
   "title",
   "price",
   "currency",
+  "linked_item",
   "column_break_lrao",
   "event",
+  "company",
   "is_published",
   "auto_unpublish_after",
   "max_tickets_available",
@@ -49,7 +50,6 @@
    "options": "currency"
   },
   {
-   "default": "INR",
    "fieldname": "currency",
    "fieldtype": "Link",
    "label": "Currency",
@@ -97,6 +97,23 @@
   {
    "fieldname": "column_break_ygut",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "event.company",
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "linked_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Linked Item",
+   "options": "Item"
   }
  ],
  "grid_page_length": 50,
@@ -107,7 +124,7 @@
    "link_fieldname": "ticket_type"
   }
  ],
- "modified": "2025-08-08 15:37:29.303665",
+ "modified": "2025-10-08 08:09:07.770882",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Ticket Type",
