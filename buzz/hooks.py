@@ -16,7 +16,7 @@ after_install = "buzz.install.after_install"
 
 
 website_route_rules = [
-	{"from_route": "/dashboard/<path:app_path>", "to_route": "dashboard"},
+    {"from_route": "/dashboard/<path:app_path>", "to_route": "dashboard"},
 ]
 
 # Scheduled Tasks
@@ -151,13 +151,12 @@ before_tests = "buzz.install.before_tests"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "GL Entry": {
+        "after_insert": "buzz.buzz.overrides.server.gl_entry.on_update",
+        "on_update": "buzz.buzz.overrides.server.gl_entry.on_update",
+    },
+}
 
 
 # Overriding Methods

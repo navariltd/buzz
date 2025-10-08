@@ -199,3 +199,32 @@ def make_payment_entry(invoice):
         )
 
     return pe
+
+
+def check_and_validate_payment(sales_invoice):
+    try:
+        invoice = frappe.get_doc("Sales Invoice", sales_invoice)
+
+        event_booking = frappe.get_doc("Event Booking", invoice.event_booking)
+        invoices = frappe.get_all(
+            "Sales Invoice",
+            filters={"event_booking": invoice.event_booking, "docstatus": ["!=", 2]},
+            fields=["name", "grand_total", "outstanding_amount", "posting_date"],
+            order_by="posting_date asc",
+        )
+
+        total_paid = 0
+        for inv in invoices:
+            if inv.outstanding_amount == 0:
+                total_paid += inv.grand_total
+
+        if (
+            total_paid >= float(event_booking.total_amount)
+            and event_booking.docstatus == 0
+        ):
+            event_booking.submit()
+    except Exception as e:
+        frappe.log_error(
+            f"Payment validation failed for Sales Invoice {sales_invoice}",
+            frappe.get_traceback(),
+        )
