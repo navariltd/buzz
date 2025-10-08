@@ -153,9 +153,13 @@
   {
    "link_doctype": "Payment Request",
    "link_fieldname": "reference_name"
+  },
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "event_booking"
   }
  ],
- "modified": "2025-10-08 10:49:14.885339",
+ "modified": "2025-10-08 13:18:31.573180",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Booking",

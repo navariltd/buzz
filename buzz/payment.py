@@ -47,6 +47,11 @@ def create_customer(user_details):
 
 def make_payment_request(customer, event_booking, phone_number=None):
     try:
+        invoice = frappe.db.get_value(
+            "Sales Invoice",
+            {"event_booking": event_booking.name, "docstatus": ["!=", 2]},
+            "name",
+        )
         payment_request = frappe.get_doc(
             {
                 "doctype": "Payment Request",
@@ -55,8 +60,8 @@ def make_payment_request(customer, event_booking, phone_number=None):
                 "party_type": "Customer",
                 "status": "Initiated",
                 "party": customer.name,
-                "reference_doctype": "Event Booking",
-                "reference_name": event_booking.name,
+                "reference_doctype": "Sales Invoice",
+                "reference_name": invoice,
                 "payment_gateway": event_booking.payment_gateway,
                 "currency": event_booking.currency,
                 "grand_total": event_booking.total_amount,
@@ -130,6 +135,7 @@ def make_invoice(event_booking, customer):
                         "income_account": income_account,
                         "expense_account": expense_account,
                         "cost_center": cost_center,
+                        "event_booking": event_booking.name,
                     }
                 )
             else:
@@ -143,6 +149,7 @@ def make_invoice(event_booking, customer):
                 "customer": customer.name,
                 "currency": event_booking.currency,
                 "company": event_booking.company,
+                "event_booking": event_booking.name,
                 "items": invoice_items,
             }
         )
