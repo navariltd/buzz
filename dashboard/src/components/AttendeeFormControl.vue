@@ -137,6 +137,14 @@ const getAddOnOption = (addOnName) => {
 const updateAddOnSelection = (addOnName, selected) => {
 	ensureAddOnExists(addOnName);
 	props.attendee.add_ons[addOnName].selected = selected;
+
+	// If selecting an add-on and it has options, ensure the first option is selected
+	if (selected) {
+		const addOn = props.availableAddOns.find((a) => a.name === addOnName);
+		if (addOn?.options && addOn.options.length > 0 && !props.attendee.add_ons[addOnName].option) {
+			props.attendee.add_ons[addOnName].option = addOn.options[0];
+		}
+	}
 };
 
 const updateAddOnOption = (addOnName, option) => {
