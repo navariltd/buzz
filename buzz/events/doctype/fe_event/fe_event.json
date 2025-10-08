@@ -10,6 +10,7 @@
   "medium",
   "event_access",
   "column_break_cxqh",
+  "company",
   "banner_image",
   "host",
   "venue",
@@ -244,6 +245,15 @@
    "fieldname": "is_ticketed",
    "fieldtype": "Check",
    "label": "Is Ticketed"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
@@ -316,7 +326,7 @@
    "link_fieldname": "event"
   }
  ],
- "modified": "2025-10-02 08:03:36.152216",
+ "modified": "2025-10-07 16:00:31.609416",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "FE Event",
