@@ -7,6 +7,13 @@ from frappe import _
 from frappe.model.document import Document
 
 from buzz.payments import mark_payment_as_received
+from buzz.payment import (
+    generate_invoice,
+    make_payment_entry,
+    make_invoice,
+    create_customer,
+    make_payment_request,
+)
 
 
 class EventBooking(Document):
@@ -16,17 +23,19 @@ class EventBooking(Document):
 	from typing import TYPE_CHECKING
 
 	if TYPE_CHECKING:
-		from frappe.types import DF
-
 		from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
 			EventBookingAttendee,
 		)
+		from frappe.types import DF
 
 		amended_from: DF.Link | None
 		attendees: DF.Table[EventBookingAttendee]
+		company: DF.Data
 		currency: DF.Link
+		customer: DF.Link | None
 		event: DF.Link
 		net_amount: DF.Currency
+		payment_gateway: DF.Link | None
 		tax_amount: DF.Currency
 		tax_percentage: DF.Percent
 		total_amount: DF.Currency
@@ -39,6 +48,7 @@ class EventBooking(Document):
 		self.set_currency()
 		self.set_total()
 		self.apply_taxes_if_applicable()
+		self.customer = self.make_customer()
 
 	def set_currency(self):
 		self.currency = self.attendees[0].currency
@@ -106,7 +116,9 @@ class EventBooking(Document):
 			ticket.attendee_email = attendee.email
 
 			if attendee.add_ons:
-				add_ons_list = frappe.get_cached_doc("Attendee Ticket Add-on", attendee.add_ons).add_ons
+				add_ons_list = frappe.get_cached_doc(
+					"Attendee Ticket Add-on", attendee.add_ons
+				).add_ons
 				ticket.add_ons = add_ons_list
 			ticket.flags.ignore_permissions = 1
 			ticket.insert().submit()
@@ -124,3 +136,67 @@ class EventBooking(Document):
 		except Exception:
 			frappe.log_error(frappe.get_traceback(), _("Booking Failed"))
 			frappe.throw(frappe._("Booking Failed! Please contact support."))
+	def make_customer(self):
+		user = frappe.get_doc("User", frappe.session.user)
+
+		user_details = frappe._dict(
+			{
+				"fullname": user.full_name,
+				"email": user.email,
+				"mobile": user.phone,
+			}
+		)
+
+		# Try to find customer by email_id
+		customer_name = frappe.db.get_value("Customer", {"email_id": user.email}, "name")
+
+		if self.customer:
+			customer = frappe.get_doc("Customer", self.customer)
+			return customer.name
+		elif customer_name:
+			customer = frappe.get_doc("Customer", customer_name)
+			return customer.name
+		else:
+			print("Creating new customer")
+			customer = create_customer(user_details)
+			customer = frappe.get_doc("Customer", customer)
+		return customer
+
+	@frappe.whitelist()
+	def initialize_payment(self, phone_number=None):
+		try:
+
+			phone_number = phone_number
+			customer = frappe.get_doc("Customer", self.customer)
+			payment_request = make_payment_request(customer, self, phone_number)
+
+		except Exception as e:
+			frappe.log_error(frappe.get_traceback(), _("Payment Initialization Failed"))
+			frappe.throw(
+				frappe._(
+					"There was an error in processing your payment. Please contact support."
+				)
+			)
+
+		return payment_request
+
+	@frappe.whitelist()
+	def generate_invoice(self):
+
+		try:
+			customer = frappe.get_doc("Customer", self.customer)
+
+			invoice = make_invoice(self, customer)
+
+		except Exception as e:
+			frappe.log_error(
+				frappe.get_traceback(),
+				f"Invoice Creation Failed for customer {self.user}",
+			)
+			frappe.throw(
+				frappe._(
+					"There was an error in processing your invoice. Please contact support."
+				)
+			)
+
+

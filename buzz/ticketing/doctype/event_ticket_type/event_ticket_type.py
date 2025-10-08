@@ -15,9 +15,11 @@ class EventTicketType(Document):
 		from frappe.types import DF
 
 		auto_unpublish_after: DF.Date | None
+		company: DF.Data
 		currency: DF.Link
 		event: DF.Link
 		is_published: DF.Check
+		linked_item: DF.Link | None
 		max_tickets_available: DF.Int
 		name: DF.Int | None
 		price: DF.Currency
