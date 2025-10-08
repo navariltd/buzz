@@ -8,6 +8,8 @@
  "field_order": [
   "address",
   "column_break_kqaw",
+  "type",
+  "google_maps_embed_code",
   "section_break_cexp",
   "longitude",
   "latitude",
@@ -33,8 +35,10 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.type===\"Open Street Map\"",
    "fieldname": "section_break_cexp",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Open Street Map"
   },
   {
    "fieldname": "longitude",
@@ -51,12 +55,25 @@
   {
    "fieldname": "column_break_xfsv",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Embed Google Maps\nOpen Street Map"
+  },
+  {
+   "depends_on": "eval:doc.type===\"Embed Google Maps\"",
+   "description": "Open a place on Google maps then click on share",
+   "fieldname": "google_maps_embed_code",
+   "fieldtype": "HTML Editor",
+   "label": "Google Maps Embed Code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-07 17:25:44.722537",
+ "modified": "2025-10-08 16:31:51.455465",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Venue",
