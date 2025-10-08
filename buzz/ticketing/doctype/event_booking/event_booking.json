@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "event",
+  "company",
   "column_break_cjxu",
   "user",
   "section_break_xvkp",
@@ -111,6 +112,15 @@
    "label": "Tax Amount",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fetch_from": "event.company",
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
@@ -126,7 +136,7 @@
    "link_fieldname": "reference_docname"
   }
  ],
- "modified": "2025-08-21 11:23:45.681388",
+ "modified": "2025-10-07 18:38:03.715216",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Booking",
