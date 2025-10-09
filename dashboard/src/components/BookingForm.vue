@@ -68,6 +68,9 @@ import BookingSummary from "./BookingSummary.vue";
 import EventDetailsHeader from "./EventDetailsHeader.vue";
 import { createResource } from "frappe-ui";
 import { useBookingFormStorage } from "../composables/useBookingFormStorage.js";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 // Props are passed from the parent context (e.g., your main app or page)
 const props = defineProps({
@@ -294,9 +297,12 @@ async function submit() {
 
 	processBooking.submit(final_payload, {
 		onSuccess: (data) => {
-			// Redirect to payment page, don't clear data yet
-			// Data will be cleared when payment is successful
-			window.location.href = data;
+			if (data.payment_link) {
+				window.location.href = data.payment_link;
+			} else {
+				// free event
+				router.replace(`/bookings/${data.booking_name}?success=true`);
+			}
 		},
 	});
 }
