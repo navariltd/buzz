@@ -65,9 +65,10 @@
 
 		<!-- Add-ons -->
 		<div v-if="availableAddOns.length > 0">
-			<h5 class="text-md font-semibold text-ink-gray-8 mt-6 mb-3">Add-ons</h5>
+			<hr class="my-4">
+
 			<div v-for="addOn in availableAddOns" :key="addOn.name" class="mb-3">
-				<div class="flex items-center">
+				<div class="flex flex-col gap-3">
 					<FormControl
 						type="checkbox"
 						:model-value="getAddOnSelected(addOn.name)"
@@ -75,6 +76,12 @@
 						:id="`add_on_${addOn.name}_${index}`"
 						:label="`${addOn.title} (${formatPriceOrFree(addOn.price, addOn.currency)})`"
 					/>
+
+					<div class="text-ink-gray-3 text-sm" v-if="addOn.description">
+						<p>
+							{{ addOn.description }}
+						</p>
+					</div>
 				</div>
 
 				<div

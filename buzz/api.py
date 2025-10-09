@@ -128,7 +128,8 @@ def get_event_booking_data(event_route: str) -> dict:
 	add_ons = frappe.db.get_all(
 		"Ticket Add-on",
 		filters={"event": event_doc.name},
-		fields=["name", "title", "price", "currency", "user_selects_option", "options"],
+		fields=["*"],
+		order_by="title"
 	)
 
 	for add_on in add_ons:
