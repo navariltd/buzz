@@ -44,7 +44,12 @@ class EventTicket(Document):
 			"FE Event", self.event, ["title", "ticket_email_template", "ticket_print_format", "venue"]
 		)
 		subject = frappe._("Your ticket to {0} 🎟️").format(event_title)
-		args = {"doc": self, "event_title": event_title, "venue": venue}
+		args = {
+			"doc": self,
+			"event_doc": frappe.get_cached_doc("FE Event", self.event),
+			"event_title": event_title,
+			"venue": venue,
+		}
 
 		if ticket_template:
 			from frappe.email.doctype.email_template.email_template import get_email_template
@@ -61,14 +66,14 @@ class EventTicket(Document):
 			args=args,
 			reference_doctype=self.doctype,
 			reference_name=self.name,
-			attachments=[
-				{
-					"print_format_attachment": 1,
-					"doctype": self.doctype,
-					"name": self.name,
-					"print_format": ticket_print_format or "Standard Ticket",
-				}
-			],
+			# attachments=[
+			# 	{
+			# 		"print_format_attachment": 1,
+			# 		"doctype": self.doctype,
+			# 		"name": self.name,
+			# 		"print_format": ticket_print_format or "Standard Ticket",
+			# 	}
+			# ],
 		)
 
 	def validate_coupon_usage(self):
