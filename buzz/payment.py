@@ -153,7 +153,6 @@ def make_invoice(event_booking, customer):
                 "items": invoice_items,
             }
         )
-        invoice.set_missing_values()
 
         invoice.insert(ignore_permissions=True)
     except Exception as e:
