@@ -39,7 +39,7 @@ class EventTicket(Document):
 		except Exception as e:
 			frappe.log_error("Error sending ticket email: " + str(e))
 
-	def send_ticket_email(self):
+	def send_ticket_email(self, now: bool = False):
 		event_title, ticket_template, ticket_print_format, venue = frappe.get_cached_value(
 			"FE Event", self.event, ["title", "ticket_email_template", "ticket_print_format", "venue"]
 		)
@@ -66,6 +66,7 @@ class EventTicket(Document):
 			args=args,
 			reference_doctype=self.doctype,
 			reference_name=self.name,
+			now=now
 			# attachments=[
 			# 	{
 			# 		"print_format_attachment": 1,
