@@ -4,7 +4,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://new.email/static/app/placeholder.png" />
+      href="{{ frappe.db.get_value('FE Event', doc.event, 'banner_image') }}" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="x-apple-disable-message-reformatting" />
   </head>
@@ -14,7 +14,7 @@
     <div
       style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0"
       data-skip-in-text="true">
-      Your ticket for Tech Conference 2025 is ready!
+      Your ticket for {{ event_title }} is ready!
 
     </div>
     <table
@@ -111,11 +111,11 @@
                                     </p>
                                     <p
                                       style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;margin-bottom:8px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                      {{ venue }}
+                                      {{ doc.venue }}
                                     </p>
                                     <p
                                       style="color:rgb(75,85,99);font-size:14px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      {{ venue_address }}
+                                      {{ frappe.db.get_value("Event Venue", doc.venue, "address") }}
                                     </p>
                                   </td>
                                 </tr>
@@ -142,7 +142,7 @@
                                     </p>
                                     <p
                                       style="color:rgb(31,41,55);font-size:18px;font-weight:600;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      Hussain Ahmed
+                                      {{ doc.attendee_name }}
                                     </p>
                                   </td>
                                   <td
@@ -154,7 +154,7 @@
                                     </p>
                                     <p
                                       style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      {{ ticket_type }}
+                                      {{ doc.ticket_type }}
                                     </p>
                                   </td>
                                 </tr>
@@ -315,16 +315,11 @@
                   <td>
                     <p
                       style="color:rgb(209,213,219);font-size:14px;margin-bottom:8px;margin-top:0px;line-height:24px">
-                      Powered by BWH Buzz.
-                    </p>
-                    <p
-                      style="color:rgb(156,163,175);font-size:12px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                      123 Event Street, City, State 12345
+                      Powered by <a href="https://github.com/BuildWithHussain/buzz">Buzz</a>.
                     </p>
                     <p
                       style="color:rgb(156,163,175);font-size:12px;margin-top:16px;margin-bottom:0px;line-height:24px">
                       © 2025
-                      <!-- -->Tech Events Inc.<!-- -->. All rights reserved.
                     </p>
                   </td>
                 </tr>
