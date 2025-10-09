@@ -30,6 +30,7 @@ class EventBooking(Document):
         currency: DF.Link
         customer: DF.Link | None
         event: DF.Link
+        mode_of_payment: DF.Link
         net_amount: DF.Currency
         payment_gateway: DF.Link | None
         tax_amount: DF.Currency
@@ -39,12 +40,17 @@ class EventBooking(Document):
     # end: auto-generated types
 
     def validate(self):
+        self.set_mpo()
         self.validate_ticket_availability()
         self.fetch_amounts_from_ticket_types()
         self.set_currency()
         self.set_total()
         self.apply_taxes_if_applicable()
         self.customer = self.make_customer()
+
+    def set_mpo(self):
+        event = frappe.get_doc("FE Event", self.event)
+        self.mode_of_payment = event.mode_of_payment
 
     def set_currency(self):
         self.currency = self.attendees[0].currency

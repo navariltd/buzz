@@ -11,6 +11,8 @@ frappe.ui.form.on("Event Booking", {
 			};
 		});
 
+		// set_mop(frm);
+
 		if (!frm.is_new()) {
 			frm.add_custom_button("Request Payment", () => {
 				frappe.prompt(
@@ -55,4 +57,17 @@ frappe.ui.form.on("Event Booking", {
 				});
 			});
 	},
+
+	event(frm) {
+		// set_mop(frm);
+	},
 });
+
+function set_mop(frm) {
+	if (!frm.doc.event || frm.doc.mode_of_payment) return;
+	frappe.db.get_value("FE Event", frm.doc.event, "mode_of_payment").then((r) => {
+		if (r.message && r.message.mode_of_payment) {
+			frm.set_value("mode_of_payment", r.message.mode_of_payment);
+		}
+	});
+}
