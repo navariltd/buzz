@@ -66,14 +66,15 @@
    "depends_on": "eval:doc.type===\"Embed Google Maps\"",
    "description": "Open a place on Google maps then click on share",
    "fieldname": "google_maps_embed_code",
-   "fieldtype": "HTML Editor",
-   "label": "Google Maps Embed Code"
+   "fieldtype": "Code",
+   "label": "Google Maps Embed Code",
+   "options": "HTML"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-08 16:31:51.455465",
+ "modified": "2025-10-09 10:08:41.169559",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Venue",

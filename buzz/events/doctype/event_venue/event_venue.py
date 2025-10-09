@@ -15,7 +15,7 @@ class EventVenue(Document):
 		from frappe.types import DF
 
 		address: DF.SmallText
-		google_maps_embed_code: DF.HTMLEditor | None
+		google_maps_embed_code: DF.Code | None
 		latitude: DF.Float
 		longitude: DF.Float
 		type: DF.Literal["Embed Google Maps", "Open Street Map"]
