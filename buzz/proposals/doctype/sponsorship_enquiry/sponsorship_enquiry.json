@@ -8,6 +8,7 @@
   "event",
   "company_name",
   "company_logo",
+  "website",
   "column_break_fhgg",
   "status",
   "tier"
@@ -54,6 +55,12 @@
    "label": "Event",
    "options": "FE Event",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
   }
  ],
  "grid_page_length": 50,
@@ -69,7 +76,7 @@
    "link_fieldname": "reference_docname"
   }
  ],
- "modified": "2025-08-19 13:54:49.025028",
+ "modified": "2025-10-09 13:13:17.791046",
  "modified_by": "Administrator",
  "module": "Proposals",
  "name": "Sponsorship Enquiry",
