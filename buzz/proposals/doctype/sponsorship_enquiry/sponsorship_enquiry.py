@@ -18,6 +18,7 @@ class SponsorshipEnquiry(Document):
 
 		company_logo: DF.AttachImage
 		company_name: DF.Data
+		country: DF.Link | None
 		event: DF.Link
 		status: DF.Literal["Approval Pending", "Payment Pending", "Paid", "Withdrawn"]
 		tier: DF.Link | None
@@ -55,6 +56,7 @@ class SponsorshipEnquiry(Document):
 				"event": self.event,
 				"tier": self.tier,
 				"enquiry": self.name,
-				"website": self.website
+				"website": self.website,
+				"country": self.country
 			}
 		).insert(ignore_permissions=True)
