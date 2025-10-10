@@ -7,9 +7,9 @@ from frappe.model.document import Document
 
 from buzz.payments import mark_payment_as_received
 from buzz.payment import (
-    make_invoice,
-    create_customer,
-    make_payment_request,
+make_invoice,
+create_customer,
+make_payment_request,
 )
 
 
@@ -251,9 +251,7 @@ class EventBooking(Document):
             customer = frappe.get_doc("Customer", customer)
         return customer
 
-    @frappe.whitelist()
-    def initialize_payment(self, phone_number=None):
-        try:
+
     @frappe.whitelist()
     def initialize_payment(self, phone_number=None):
         try:
@@ -278,30 +276,15 @@ class EventBooking(Document):
             )
 
         return payment_request
-        return payment_request
 
     @frappe.whitelist()
     def generate_invoice(self):
-    @frappe.whitelist()
-    def generate_invoice(self):
 
-        try:
-            customer = frappe.get_doc("Customer", self.customer)
         try:
             customer = frappe.get_doc("Customer", self.customer)
 
             invoice = make_invoice(self, customer)
 
-        except Exception as e:
-            frappe.log_error(
-                frappe.get_traceback(),
-                f"Invoice Creation Failed for customer {self.user}",
-            )
-            frappe.throw(
-                frappe._(
-                    "There was an error in processing your invoice. Please contact support."
-                )
-            )
         except Exception as e:
             frappe.log_error(
                 frappe.get_traceback(),
