@@ -47,7 +47,7 @@
 							<Button
 								variant="solid"
 								size="lg"
-								class="w-full mt-3"
+								class="w-full mt-6"
 								type="submit"
 								:loading="processBooking.loading"
 							>

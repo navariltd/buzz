@@ -3,11 +3,11 @@
 	<div v-if="eventDetails" class="mb-8">
 		<!-- Banner Image -->
 		<div
-			v-if="eventDetails.banner_image || eventDetails.image"
+			v-if="eventDetails.banner_image"
 			class="relative w-full h-48 md:h-64 lg:h-80 rounded-lg overflow-hidden mb-6"
 		>
 			<img
-				:src="eventDetails.banner_image || eventDetails.image"
+				:src="eventDetails.banner_image"
 				:alt="eventDetails.title"
 				class="w-full h-full object-cover"
 			/>

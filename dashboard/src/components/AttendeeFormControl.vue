@@ -67,7 +67,7 @@
 		<div v-if="availableAddOns.length > 0">
 			<hr class="my-4">
 
-			<div v-for="addOn in availableAddOns" :key="addOn.name" class="mb-3">
+			<div v-for="addOn in availableAddOns" :key="addOn.name" class="mb-4">
 				<div class="flex flex-col gap-3">
 					<FormControl
 						type="checkbox"
@@ -77,7 +77,7 @@
 						:label="`${addOn.title} (${formatPriceOrFree(addOn.price, addOn.currency)})`"
 					/>
 
-					<div class="text-ink-gray-3 text-sm" v-if="addOn.description">
+					<div class="text-ink-gray-5 text-sm" v-if="addOn.description">
 						<p>
 							{{ addOn.description }}
 						</p>
