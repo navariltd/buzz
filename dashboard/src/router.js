@@ -96,9 +96,9 @@ router.beforeEach(async (to, from, next) => {
 	}
 
 	if (to.name === "Login" && isLoggedIn) {
-		next({ name: "Home" });
+		next({ name: "dashboard" });
 	} else if (to.name !== "Login" && !isLoggedIn) {
-		window.location.href = `/login?redirect-to=${encodeURIComponent(to.fullPath)}`;
+		window.location.href = `/login?redirect-to=/dashboard/${encodeURIComponent(to.fullPath)}`;
 	} else {
 		next();
 	}
