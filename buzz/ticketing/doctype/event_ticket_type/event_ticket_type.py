@@ -6,8 +6,8 @@ from frappe.model.document import Document
 
 
 class EventTicketType(Document):
-	# begin: auto-generated types
-	# This code is auto-generated. Do not modify anything in this block.
+    # begin: auto-generated types
+    # This code is auto-generated. Do not modify anything in this block.
 
 	from typing import TYPE_CHECKING
 
@@ -34,7 +34,9 @@ class EventTicketType(Document):
 	@property
 	def tickets_sold(self) -> int:
 		"""Returns the number of tickets sold for this ticket type."""
-		return frappe.db.count("Event Ticket", {"ticket_type": self.name, "docstatus": 1})
+		return frappe.db.count(
+			"Event Ticket", {"ticket_type": self.name, "docstatus": 1}
+		)
 
 	@property
 	def remaining_tickets(self) -> int:
@@ -42,3 +44,23 @@ class EventTicketType(Document):
 		if not self.max_tickets_available:
 			return -1
 		return self.max_tickets_available - self.tickets_sold
+
+	def validate(self):
+		self.create_linked_item()
+
+	def create_linked_item(self):
+		if not self.linked_item:
+			if frappe.db.exists("Item", "Ticket"):
+				self.linked_item = "Ticket"
+			else:
+				item = frappe.get_doc(
+					{
+						"doctype": "Item",
+						"item_code": "Ticket",
+						"item_group": "Services",
+						"stock_uom": "Nos",
+						"is_stock_item": 0,
+					}
+				)
+				item.insert()
+				self.linked_item = item.name
