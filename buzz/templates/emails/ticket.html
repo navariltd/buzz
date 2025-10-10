@@ -1,339 +1,445 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" lang="en">
-  <head>
-    <link
-      rel="preload"
-      as="image"
-      href="https://new.email/static/app/placeholder.png" />
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-    <meta name="x-apple-disable-message-reformatting" />
-  </head>
-  <body
-    style='background-color:rgb(243,244,246);font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";padding-top:40px;padding-bottom:40px'>
-    <!--$-->
-    <div
-      style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0"
-      data-skip-in-text="true">
-      Your ticket for Tech Conference 2025 is ready!
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<meta name="x-apple-disable-message-reformatting" />
+		<style>
+			@media only screen and (max-width: 600px) {
+				.mobile-stack {
+					display: block !important;
+					width: 100% !important;
+					padding: 0 !important;
+				}
+				.mobile-padding {
+					padding-left: 24px !important;
+					padding-right: 24px !important;
+				}
+			}
+		</style>
+	</head>
+	<body
+		style="
+			margin: 0;
+			padding: 0;
+			background-color: #f8f9fa;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+				Arial, sans-serif;
+		"
+	>
+		<div style="display: none; max-height: 0; overflow: hidden; opacity: 0">
+			Your ticket for {{ event.title }} is ready!
+		</div>
 
-    </div>
-    <table
-      align="center"
-      width="100%"
-      border="0"
-      cellpadding="0"
-      cellspacing="0"
-      role="presentation"
-      style="background-color:rgb(255,255,255);border-radius:8px;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), 0 0 #0000;max-width:600px;margin-left:auto;margin-right:auto;overflow:hidden">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="background-color:rgb(29,78,216);padding-left:40px;padding-right:40px;padding-top:32px;padding-bottom:32px;text-align:center">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1
-                      style="color:rgb(255,255,255);font-size:28px;font-weight:700;margin:0px;margin-bottom:8px">
-                      🎟️ Your Ticket is Ready!
-                    </h1>
-                    <p
-                      style="color:rgb(219,234,254);font-size:16px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                      Get ready for an amazing experience
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="padding-left:40px;padding-right:40px;padding-top:32px;padding-bottom:32px">
-              <tbody>
-                <tr>
-                  <td>
-                    <table
-                      align="center"
-                      width="100%"
-                      border="0"
-                      cellpadding="0"
-                      cellspacing="0"
-                      role="presentation">
-                      <tbody style="width:100%">
-                        <tr style="width:100%">
-                          <td data-id="__react-email-column">
-                            <h1
-                              style="color:rgb(31,41,55);font-size:24px;font-weight:700;margin-bottom:16px;margin-top:0px">
-                              {{ event_title }}
-                            </h1>
-                            <table
-                              align="center"
-                              width="100%"
-                              border="0"
-                              cellpadding="0"
-                              cellspacing="0"
-                              role="presentation"
-                              style="margin-bottom:24px">
-                              <tbody style="width:100%">
-                                <tr style="width:100%">
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-right:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      📅 DATE &amp; TIME
-                                    </p>
-                                    <p
-                                      style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;margin-bottom:16px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                      {{ event_start_date }}
-                                    </p>
-                                    <p
-                                      style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      {{ event_time_range }}
-                                    </p>
-                                  </td>
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-left:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      📍 VENUE
-                                    </p>
-                                    <p
-                                      style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;margin-bottom:8px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                      {{ venue }}
-                                    </p>
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      {{ venue_address }}
-                                    </p>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <hr
-                              style="border-color:rgb(229,231,235);border-style:solid;margin-top:24px;margin-bottom:24px;width:100%;border:none;border-top:1px solid #eaeaea" />
-                            <table
-                              align="center"
-                              width="100%"
-                              border="0"
-                              cellpadding="0"
-                              cellspacing="0"
-                              role="presentation"
-                              style="margin-bottom:24px">
-                              <tbody style="width:100%">
-                                <tr style="width:100%">
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-right:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      👤 ATTENDEE
-                                    </p>
-                                    <p
-                                      style="color:rgb(31,41,55);font-size:18px;font-weight:600;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      Hussain Ahmed
-                                    </p>
-                                  </td>
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-left:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      🎫 TICKET TYPE
-                                    </p>
-                                    <p
-                                      style="color:rgb(31,41,55);font-size:16px;font-weight:500;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                                      {{ ticket_type }}
-                                    </p>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <table
-                              align="center"
-                              width="100%"
-                              border="0"
-                              cellpadding="0"
-                              cellspacing="0"
-                              role="presentation"
-                              style="margin-bottom:32px">
-                              <tbody style="width:100%">
-                                <tr style="width:100%">
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-right:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      🔢 TICKET ID
-                                    </p>
-                                    <p
-                                      style='color:rgb(31,41,55);font-size:16px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-weight:500;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px'>
-                                      {{ doc.name }}
-                                    </p>
-                                  </td>
-                                  <td
-                                    data-id="__react-email-column"
-                                    style="width:50%;padding-left:16px">
-                                    <p
-                                      style="color:rgb(75,85,99);font-size:14px;font-weight:600;margin-bottom:4px;margin-top:0px;line-height:24px">
-                                      ✨ ADD-ONS
-                                    </p>
-                                    <div>
-										{% for add_on in doc.add_ons %}
-                                      <p
-                                        style="color:rgb(31,41,55);font-size:14px;margin:0px;margin-bottom:2px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                        •
-                                         {{ frappe.db.get_value("Ticket Add-on", add_on.add_on, "title") }} ({{ add_on.value }})
-                                      </p>
-									  {% endfor %}
-                                    </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="background-color:rgb(249,250,251);padding-left:40px;padding-right:40px;padding-top:32px;padding-bottom:32px;text-align:center;border-top-width:2px;border-style:dashed;border-color:rgb(209,213,219)">
-              <tbody>
-                <tr>
-                  <td>
-                    <p
-                      style="color:rgb(31,41,55);font-size:18px;font-weight:600;margin-bottom:16px;margin-top:0px;line-height:24px">
-                      Your Entry QR Code
-                    </p>
-                    <div
-                      style="background-color:rgb(255,255,255);padding:16px;border-radius:8px;display:inline-block;border-style:solid;border-width:2px;border-color:rgb(229,231,235)">
-                      <img
-                        alt="Event Entry QR Code"
-                        height="200"
-                        src="{{ doc.qr_code }}"
-                        style="width:100%;height:auto;object-fit:cover;display:block;outline:none;border:none;text-decoration:none"
-                        width="200" />
-                    </div>
-                    <p
-                      style="color:rgb(75,85,99);font-size:14px;margin-top:16px;margin-bottom:0px;line-height:24px">
-                      Show this QR code at the venue entrance for quick check-in
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="padding-left:40px;padding-right:40px;padding-top:24px;padding-bottom:24px;background-color:rgb(254,252,232);border-left-width:4px;border-style:solid;border-color:rgb(250,204,21)">
-              <tbody>
-                <tr>
-                  <td>
-                    <p
-                      style="color:rgb(133,77,14);font-size:16px;font-weight:600;margin-bottom:8px;margin-top:0px;line-height:24px">
-                      ⚠️ Important Information
-                    </p>
-                    <p
-                      style="color:rgb(161,98,7);font-size:14px;margin:0px;margin-bottom:8px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                      • Please arrive 30 minutes before the event starts
-                    </p>
-                    <p
-                      style="color:rgb(161,98,7);font-size:14px;margin:0px;margin-bottom:8px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                      • Bring a valid ID for verification
-                    </p>
-                    <p
-                      style="color:rgb(161,98,7);font-size:14px;margin:0px;margin-bottom:8px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                      • This ticket is non-transferable and non-refundable
-                    </p>
-                    <p
-                      style="color:rgb(161,98,7);font-size:14px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                      • Save this email or take a screenshot for backup
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table> -->
-            <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="padding-left:40px;padding-right:40px;padding-top:24px;padding-bottom:24px;text-align:center">
-              <tbody>
-                <tr>
-                  <td>
-                    <p
-                      style="color:rgb(75,85,99);font-size:14px;margin-bottom:16px;margin-top:0px;line-height:24px">
-                      Need help? Contact our support team
-                    </p>
-                    <a
-                      href="mailto:support@techconference.com"
-                      style="background-color:rgb(37,99,235);color:rgb(255,255,255);padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;border-radius:6px;font-size:16px;font-weight:600;text-decoration-line:none;box-sizing:border-box"
-                      target="_blank"
-                      >Contact Support</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table
-              align="center"
-              width="100%"
-              border="0"
-              cellpadding="0"
-              cellspacing="0"
-              role="presentation"
-              style="background-color:rgb(31,41,55);padding-left:40px;padding-right:40px;padding-top:24px;padding-bottom:24px;text-align:center">
-              <tbody>
-                <tr>
-                  <td>
-                    <p
-                      style="color:rgb(209,213,219);font-size:14px;margin-bottom:8px;margin-top:0px;line-height:24px">
-                      Powered by BWH Buzz.
-                    </p>
-                    <p
-                      style="color:rgb(156,163,175);font-size:12px;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                      123 Event Street, City, State 12345
-                    </p>
-                    <p
-                      style="color:rgb(156,163,175);font-size:12px;margin-top:16px;margin-bottom:0px;line-height:24px">
-                      © 2025
-                      <!-- -->Tech Events Inc.<!-- -->. All rights reserved.
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <!--7--><!--/$-->
-  </body>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+			<tr>
+				<td style="padding: 40px 20px">
+					<table
+						align="center"
+						width="600"
+						border="0"
+						cellpadding="0"
+						cellspacing="0"
+						role="presentation"
+						style="
+							max-width: 600px;
+							background-color: #ffffff;
+							border-radius: 12px;
+							overflow: hidden;
+							box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+						"
+					>
+						<!-- Red accent bar -->
+						<tr>
+							<td
+								style="
+									background-color: #ef4444;
+									height: 4px;
+									line-height: 0;
+									font-size: 0;
+								"
+							>
+								&nbsp;
+							</td>
+						</tr>
+
+						<!-- Header -->
+						<tr>
+							<td
+								style="
+									padding: 48px 40px 32px;
+									text-align: center;
+									border-bottom: 1px solid #f0f0f0;
+								"
+							>
+								<h1
+									style="
+										margin: 0 0 8px;
+										font-size: 32px;
+										font-weight: 600;
+										color: #1a1a1a;
+										letter-spacing: -0.5px;
+									"
+								>
+									Your Ticket
+								</h1>
+								<p
+									style="
+										margin: 0;
+										font-size: 15px;
+										color: #6b7280;
+										line-height: 1.5;
+									"
+								>
+									Everything you need for entry
+								</p>
+							</td>
+						</tr>
+
+						<!-- Event Title -->
+						<tr>
+							<td class="mobile-padding" style="padding: 32px 40px 24px">
+								<h2
+									style="
+										margin: 0;
+										font-size: 24px;
+										font-weight: 600;
+										color: #1a1a1a;
+										line-height: 1.3;
+									"
+								>
+									{{ event.title }}
+								</h2>
+							</td>
+						</tr>
+
+						<!-- Event Details -->
+						<tr>
+							<td class="mobile-padding" style="padding: 0 40px 32px">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td
+											class="mobile-stack"
+											style="
+												width: 50%;
+												padding-right: 16px;
+												vertical-align: top;
+											"
+										>
+											<table
+												width="100%"
+												border="0"
+												cellpadding="0"
+												cellspacing="0"
+											>
+												<tr>
+													<td style="padding-bottom: 20px">
+														<p
+															style="
+																margin: 0 0 6px;
+																font-size: 11px;
+																font-weight: 600;
+																color: #ef4444;
+																text-transform: uppercase;
+																letter-spacing: 0.5px;
+															"
+														>
+															Date & Time
+														</p>
+														<p
+															style="
+																margin: 0;
+																font-size: 15px;
+																color: #1a1a1a;
+																line-height: 1.5;
+															"
+														>
+															{{ event.start_date }}<br />
+															{{ event.start_time }} {% if
+															event.end_date and event.end_time %}
+															<span style="color: #9ca3af">–</span>
+															{{ event.end_time }} {% endif %}
+														</p>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td
+											class="mobile-stack"
+											style="
+												width: 50%;
+												padding-left: 16px;
+												vertical-align: top;
+											"
+										>
+											<table
+												width="100%"
+												border="0"
+												cellpadding="0"
+												cellspacing="0"
+											>
+												<tr>
+													<td style="padding-bottom: 20px">
+														<p
+															style="
+																margin: 0 0 6px;
+																font-size: 11px;
+																font-weight: 600;
+																color: #ef4444;
+																text-transform: uppercase;
+																letter-spacing: 0.5px;
+															"
+														>
+															Venue
+														</p>
+														<p
+															style="
+																margin: 0;
+																font-size: 15px;
+																color: #1a1a1a;
+																line-height: 1.5;
+															"
+														>
+															{{ event.venue }}
+														</p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+						<!-- Divider -->
+						<tr>
+							<td class="mobile-padding" style="padding: 0 40px">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td style="border-top: 1px solid #f0f0f0"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+						<!-- Ticket Info -->
+						<tr>
+							<td class="mobile-padding" style="padding: 32px 40px">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td
+											class="mobile-stack"
+											style="
+												width: 50%;
+												padding-right: 16px;
+												vertical-align: top;
+											"
+										>
+											<p
+												style="
+													margin: 0 0 6px;
+													font-size: 11px;
+													font-weight: 600;
+													color: #ef4444;
+													text-transform: uppercase;
+													letter-spacing: 0.5px;
+												"
+											>
+												Attendee
+											</p>
+											<p
+												style="
+													margin: 0 0 20px;
+													font-size: 16px;
+													font-weight: 600;
+													color: #1a1a1a;
+												"
+											>
+												{{ doc.attendee_name }}
+											</p>
+											<p
+												style="
+													margin: 0 0 6px;
+													font-size: 11px;
+													font-weight: 600;
+													color: #ef4444;
+													text-transform: uppercase;
+													letter-spacing: 0.5px;
+												"
+											>
+												Ticket Type
+											</p>
+											<p style="margin: 0; font-size: 15px; color: #1a1a1a">
+												{{ ticket_type }}
+											</p>
+										</td>
+										<td
+											class="mobile-stack"
+											style="
+												width: 50%;
+												padding-left: 16px;
+												vertical-align: top;
+											"
+										>
+											<p
+												style="
+													margin: 0 0 6px;
+													font-size: 11px;
+													font-weight: 600;
+													color: #ef4444;
+													text-transform: uppercase;
+													letter-spacing: 0.5px;
+												"
+											>
+												Ticket ID
+											</p>
+											<p
+												style="
+													margin: 0 0 20px;
+													font-size: 13px;
+													font-family: 'Courier New', monospace;
+													color: #1a1a1a;
+													background-color: #fef2f2;
+													padding: 8px 12px;
+													border-radius: 6px;
+													border: 1px solid #fecaca;
+													display: inline-block;
+												"
+											>
+												{{ doc.name }}
+											</p>
+											{% if doc.add_ons %}
+											<p
+												style="
+													margin: 0 0 6px;
+													font-size: 11px;
+													font-weight: 600;
+													color: #ef4444;
+													text-transform: uppercase;
+													letter-spacing: 0.5px;
+												"
+											>
+												Add-ons
+											</p>
+											{% for add_on in doc.add_ons %}
+											<p
+												style="
+													margin: 0 0 4px;
+													font-size: 14px;
+													color: #6b7280;
+												"
+											>
+												{{ frappe.db.get_value("Ticket Add-on",
+												add_on.add_on, "title") }} ({{ add_on.value }})
+											</p>
+											{% endfor %} {% endif %}
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+						<!-- QR Code Section -->
+						<tr>
+							<td
+								class="mobile-padding"
+								style="
+									padding: 32px 40px 48px;
+									text-align: center;
+									background-color: #fafbfc;
+								"
+							>
+								<p
+									style="
+										margin: 0 0 20px;
+										font-size: 13px;
+										font-weight: 600;
+										color: #ef4444;
+										text-transform: uppercase;
+										letter-spacing: 0.5px;
+									"
+								>
+									Entry QR Code
+								</p>
+								<table align="center" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td
+											style="
+												background-color: #ffffff;
+												padding: 20px;
+												border-radius: 12px;
+												border: 2px solid #fecaca;
+												box-shadow: 0 1px 3px rgba(239, 68, 68, 0.1);
+											"
+										>
+											{% if doc.qr_code %}
+											<img
+												src="{{ doc.qr_code }}"
+												alt="Entry QR Code"
+												width="180"
+												height="180"
+												style="display: block; border: none"
+											/>
+											{% else %}
+											<div
+												style="
+													width: 180px;
+													height: 180px;
+													background-color: #f3f4f6;
+													display: flex;
+													align-items: center;
+													justify-content: center;
+													border-radius: 8px;
+												"
+											>
+												<span style="color: #9ca3af; font-size: 14px"
+													>QR Code</span
+												>
+											</div>
+											{% endif %}
+										</td>
+									</tr>
+								</table>
+								<p
+									style="
+										margin: 20px 0 0;
+										font-size: 13px;
+										color: #6b7280;
+										line-height: 1.5;
+									"
+								>
+									Present this code at the entrance
+								</p>
+							</td>
+						</tr>
+
+						<!-- Footer -->
+						<tr>
+							<td
+								class="mobile-padding"
+								style="
+									padding: 32px 40px;
+									text-align: center;
+									background-color: #1a1a1a;
+								"
+							>
+								<p
+									style="
+										margin: 0 0 4px;
+										font-size: 13px;
+										color: #9ca3af;
+										line-height: 1.5;
+									"
+								>
+									Registered for {{ event.title }}
+								</p>
+								<p style="margin: 0; font-size: 12px; color: #6b7280">
+									© 2025 All rights reserved
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>
