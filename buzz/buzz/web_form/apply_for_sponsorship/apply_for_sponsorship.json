@@ -24,7 +24,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 5,
- "modified": "2025-10-09 19:01:45.732483",
+ "modified": "2025-10-10 06:12:41.087247",
  "modified_by": "Administrator",
  "module": "Buzz",
  "name": "apply-for-sponsorship",
@@ -38,7 +38,7 @@
  "title": "Apply for Sponsorship",
  "web_form_fields": [
   {
-   "allow_read_on_all_link_options": 0,
+   "allow_read_on_all_link_options": 1,
    "fieldname": "event",
    "fieldtype": "Link",
    "hidden": 0,

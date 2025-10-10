@@ -25,7 +25,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2025-10-09 19:01:39.625976",
+ "modified": "2025-10-10 06:12:35.171598",
  "modified_by": "Administrator",
  "module": "Buzz",
  "name": "propose-a-talk",
@@ -64,7 +64,7 @@
    "show_in_filter": 0
   },
   {
-   "allow_read_on_all_link_options": 0,
+   "allow_read_on_all_link_options": 1,
    "fieldname": "event",
    "fieldtype": "Link",
    "hidden": 0,
