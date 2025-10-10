@@ -47,6 +47,20 @@ def create_customer(user_details):
 
 def make_payment_request(customer, event_booking, phone_number=None):
     try:
+        invoice_id = frappe.db.get_value(
+            "Sales Invoice",
+            {"event_booking": event_booking.name, "docstatus": ["!=", 2]},
+            "name",
+        )
+        invoice = frappe.get_doc("Sales Invoice", invoice_id)
+        payment_gateway = get_payment_gateway_from_mop(
+            event_booking.mode_of_payment, event_booking.company
+        )
+        payment_gateway_account = frappe.db.get_value(
+            "Payment Gateway Account",
+            {"payment_gateway": payment_gateway, "company": event_booking.company},
+            "name",
+        )
         payment_request = frappe.get_doc(
             {
                 "doctype": "Payment Request",
@@ -55,9 +69,12 @@ def make_payment_request(customer, event_booking, phone_number=None):
                 "party_type": "Customer",
                 "status": "Initiated",
                 "party": customer.name,
-                "reference_doctype": "Event Booking",
-                "reference_name": event_booking.name,
-                "payment_gateway": event_booking.payment_gateway,
+                "reference_doctype": "Sales Invoice",
+                "reference_name": invoice.name,
+                "mode_of_payment": event_booking.mode_of_payment,
+                "payment_gateway": payment_gateway,
+                "payment_gateway_account": payment_gateway_account,
+                "outstanding_amount": invoice.outstanding_amount,
                 "currency": event_booking.currency,
                 "grand_total": event_booking.total_amount,
                 "email_to": customer.email_id,
@@ -130,6 +147,7 @@ def make_invoice(event_booking, customer):
                         "income_account": income_account,
                         "expense_account": expense_account,
                         "cost_center": cost_center,
+                        "event_booking": event_booking.name,
                     }
                 )
             else:
@@ -143,10 +161,10 @@ def make_invoice(event_booking, customer):
                 "customer": customer.name,
                 "currency": event_booking.currency,
                 "company": event_booking.company,
+                "event_booking": event_booking.name,
                 "items": invoice_items,
             }
         )
-        invoice.set_missing_values()
 
         invoice.insert(ignore_permissions=True)
     except Exception as e:
@@ -192,3 +210,67 @@ def make_payment_entry(invoice):
         )
 
     return pe
+
+
+def check_and_validate_payment(sales_invoice):
+    try:
+        invoice = frappe.get_doc("Sales Invoice", sales_invoice)
+
+        event_booking = frappe.get_doc("Event Booking", invoice.event_booking)
+        invoices = frappe.get_all(
+            "Sales Invoice",
+            filters={"event_booking": invoice.event_booking, "docstatus": ["!=", 2]},
+            fields=["name", "grand_total", "outstanding_amount", "posting_date"],
+            order_by="posting_date asc",
+        )
+
+        total_paid = 0
+        for inv in invoices:
+            if inv.outstanding_amount == 0:
+                total_paid += inv.grand_total
+
+        if (
+            total_paid >= float(event_booking.total_amount)
+            and event_booking.docstatus == 0
+        ):
+            event_booking.submit()
+    except Exception as e:
+        frappe.log_error(
+            f"Payment validation failed for Sales Invoice {sales_invoice}",
+            frappe.get_traceback(),
+        )
+
+
+@frappe.whitelist()
+def get_payment_gateway_from_mop(mode_of_payment: str, company: str) -> str:
+    payment_gateway = None
+    try:
+        if not frappe.db.exists("Mode of Payment", mode_of_payment):
+            return None
+        mop_doc = frappe.get_doc("Mode of Payment", mode_of_payment)
+        account_entry = next(
+            (acc for acc in mop_doc.accounts if acc.company == company), None
+        )
+        if account_entry:
+            payment_account = account_entry.default_account
+            if frappe.db.exists(
+                "Payment Gateway Account", {"payment_account": payment_account}
+            ):
+                try:
+                    pg_account = frappe.get_doc(
+                        "Payment Gateway Account", {"payment_account": payment_account}
+                    )
+                    if pg_account and pg_account.payment_gateway:
+                        payment_gateway = pg_account.payment_gateway
+                except Exception:
+                    pass
+            else:
+                default_pg_account = frappe.get_value(
+                    "Payment Gateway Account", {"is_default": 1}, "payment_gateway"
+                )
+                if default_pg_account:
+                    payment_gateway = default_pg_account
+    except Exception:
+        pass
+
+    return payment_gateway
