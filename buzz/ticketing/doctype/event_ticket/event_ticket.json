@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:TKT-{YYYY}-{MM}-{event}-{####}",
  "creation": "2025-07-22 19:49:30.385500",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -113,10 +114,11 @@
    "link_fieldname": "ticket"
   }
  ],
- "modified": "2025-08-17 21:21:44.248705",
+ "modified": "2025-10-10 12:27:40.649971",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Ticket",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
