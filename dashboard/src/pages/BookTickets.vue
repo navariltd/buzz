@@ -3,7 +3,7 @@
 		<div class="w-8">
 			<Spinner v-if="eventBookingResource.loading" />
 		</div>
-		<div class="px-4">
+		<div>
 			<BookingForm
 				v-if="eventBookingData.availableAddOns && eventBookingData.availableTicketTypes"
 				:availableAddOns="eventBookingData.availableAddOns"
