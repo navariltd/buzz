@@ -301,7 +301,7 @@ async function submit() {
 				window.location.href = data.payment_link;
 			} else {
 				// free event
-				router.replace(`/bookings/${data.booking_name}?success=true`);
+				router.replace(`/bookings/${data.booking_name}`);
 			}
 		},
 	});
