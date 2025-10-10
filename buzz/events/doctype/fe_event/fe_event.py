@@ -47,6 +47,7 @@ class FEEvent(Document):
 	def validate(self):
 		self.validate_route()
 		self.create_attendee_registration()
+		self.create_event_route()
 
 	def validate_route(self):
 		if self.is_published and not self.route:
@@ -71,3 +72,6 @@ class FEEvent(Document):
 					}
 				)
 				ar.insert()
+
+	def create_event_route(self):
+		self.route = self.title.lower().replace(" ", "-")
