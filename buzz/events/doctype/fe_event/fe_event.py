@@ -51,3 +51,17 @@ class FEEvent(Document):
 	@frappe.whitelist()
 	def check_in(self, ticket_id: str, track: str | None = None):
 		frappe.get_doc({"doctype": "Event Check In", "ticket": ticket_id, "track": track}).insert().submit()
+
+	def after_insert(self):
+		self.create_default_records()
+
+	def create_default_records(self):
+		records = [
+			{"doctype": "Sponsorship Tier", "title": "Normal"},
+			{"doctype": "Event Ticket Type", "title": "Normal"}
+		]
+		for record in records:
+			frappe.get_doc({
+				**record,
+				"event": self.name
+			}).insert(ignore_permissions=True)
