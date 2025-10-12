@@ -28,37 +28,44 @@
 
 		<!-- Event Details -->
 		<div class="bg-surface-gray-1 rounded-lg p-6">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-sm">
 				<!-- Date -->
-				<div v-if="eventDetails.start_date" class="flex items-center gap-2">
-					<LucideCalendar class="h-4 w-4 text-ink-gray-6" />
+				<div v-if="eventDetails.start_date" class="flex flex-col items-start gap-3">
+					<div class="flex items-center gap-2">
+						<LucideCalendar class="h-4 w-4 text-ink-gray-6" />
+						<p class="text-ink-gray-6 text-base">Date</p>
+					</div>
 					<div>
-						<span class="text-ink-gray-6">Date:</span>
-						<span class="ml-1 font-medium text-ink-gray-8">
+
+						<p class="font-medium text-ink-gray-8">
 							{{ formatEventDates(eventDetails.start_date, eventDetails.end_date) }}
-						</span>
+						</p>
 					</div>
 				</div>
 
 				<!-- Time -->
-				<div v-if="eventDetails.start_time" class="flex items-center gap-2">
-					<LucideClock class="h-4 w-4 text-ink-gray-6" />
+				<div v-if="eventDetails.start_time" class="flex flex-col items-start gap-3">
+					<div class="flex gap-2 items-center">
+						<LucideClock class="h-4 w-4 text-ink-gray-6" />
+						<p class="text-ink-gray-6 text-base">Time</p>
+					</div>
 					<div>
-						<span class="text-ink-gray-6">Time:</span>
-						<span class="ml-1 font-medium text-ink-gray-8">
+						<p class="font-medium text-ink-gray-8">
 							{{ formatEventTime(eventDetails.start_time, eventDetails.end_time) }}
-						</span>
+						</p>
 					</div>
 				</div>
 
 				<!-- Venue -->
-				<div v-if="eventDetails.venue" class="flex items-center gap-2">
-					<LucideMapPin class="h-4 w-4 text-ink-gray-6" />
+				<div v-if="eventDetails.venue" class="flex flex-col items-start gap-3">
+					<div class="flex items-center gap-2">
+						<LucideMapPin class="h-4 w-4 text-ink-gray-6" />
+						<p class="text-ink-gray-6 text-base">Venue</p>
+					</div>
 					<div>
-						<span class="text-ink-gray-6">Venue:</span>
-						<span class="ml-1 font-medium text-ink-gray-8">{{
+						<p class="font-medium text-ink-gray-8">{{
 							eventDetails.venue
-						}}</span>
+						}}</p>
 					</div>
 				</div>
 			</div>
