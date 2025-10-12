@@ -1,6 +1,6 @@
 <!-- BookingSummary.vue -->
 <template>
-	<div class="bg-surface-gray-1 border border-outline-gray-1 rounded-lg p-6">
+	<div class="bg-surface-gray-1 border border-outline-gray-1 rounded-lg p-4">
 		<h2 class="text-xl font-bold text-ink-gray-9 mb-4">Booking Summary</h2>
 
 		<!-- Tickets Section -->
@@ -63,8 +63,8 @@
 
 		<!-- Free event message -->
 		<template v-else>
-			<hr class="my-4 border-t border-outline-gray-1" />
-			<div class="text-center py-4">
+			<hr class="my-2 border-t border-outline-gray-1" />
+			<div class="text-center pt-2">
 				<div class="text-xl font-bold text-green-600">Free Event</div>
 			</div>
 		</template>
