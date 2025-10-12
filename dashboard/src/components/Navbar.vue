@@ -4,10 +4,15 @@
 			<RouterLink :to="{ name: 'bookings-tab' }">
 				<span class="font-bold text-ink-gray-7">Buzz</span>
 			</RouterLink>
-			<Button variant="ghost" size="md" @click="toggleTheme">
-				<LucideSun v-if="userTheme === 'dark'" class="w-4 h-4" />
-				<LucideMoon v-else class="w-4 h-4" />
-			</Button>
+			<div class="flex items-center gap-2">
+				<Button variant="ghost" size="md" @click="toggleTheme">
+					<LucideSun v-if="userTheme === 'dark'" class="w-4 h-4" />
+					<LucideMoon v-else class="w-4 h-4" />
+				</Button>
+				<Button @click="session.logout.submit" icon-right="log-out" variant="ghost" size="md">
+					Log Out
+				</Button>
+			</div>
 		</nav>
 	</div>
 </template>
@@ -15,6 +20,7 @@
 <script setup>
 import LucideSun from "~icons/lucide/sun";
 import LucideMoon from "~icons/lucide/moon";
+import { session } from "../data/session";
 
 import { onMounted } from "vue";
 import { useStorage } from "@vueuse/core";
