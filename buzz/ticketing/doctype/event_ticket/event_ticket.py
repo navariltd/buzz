@@ -65,15 +65,15 @@ class EventTicket(Document):
 			args=args,
 			reference_doctype=self.doctype,
 			reference_name=self.name,
-			now=now
-			# attachments=[
-			# 	{
-			# 		"print_format_attachment": 1,
-			# 		"doctype": self.doctype,
-			# 		"name": self.name,
-			# 		"print_format": ticket_print_format or "Standard Ticket",
-			# 	}
-			# ],
+			now=now,
+			attachments=[
+				{
+					"print_format_attachment": 1,
+					"doctype": self.doctype,
+					"name": self.name,
+					"print_format": ticket_print_format or "Standard Ticket",
+				}
+			],
 		)
 
 	def validate_coupon_usage(self):
