@@ -39,6 +39,13 @@ fixtures = [
     {"dt": "Role", "filters": {"name": "Buzz User"}}
 ]
 
+user_invitation = {
+	"allowed_roles": {
+        "Event Manager": ["Buzz User"],
+        "Buzz User": ["Buzz User"]
+	}
+}
+
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [

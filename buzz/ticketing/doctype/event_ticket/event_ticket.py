@@ -4,8 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-from buzz.ticketing.doctype.event_ticket_type.event_ticket_type import EventTicketType
-
+from frappe.core.api.user_invitation import invite_by_email
 
 class EventTicket(Document):
 	# begin: auto-generated types
@@ -37,6 +36,19 @@ class EventTicket(Document):
 			self.send_ticket_email()
 		except Exception as e:
 			frappe.log_error("Error sending ticket email: " + str(e))
+
+		try:
+			self.send_user_invitation()
+		except Exception as e:
+			frappe.log_error("Error sending user invitation: " + str(e))
+
+	def send_user_invitation(self):
+		invite_by_email(
+			emails=self.attendee_email,
+			roles=["Buzz User"],
+			redirect_to_path="/dashboard/account/tickets",
+			app_name="buzz"
+		)
 
 	def send_ticket_email(self, now: bool = False):
 		event_title, ticket_template, ticket_print_format, venue = frappe.get_cached_value(
