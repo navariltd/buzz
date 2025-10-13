@@ -69,10 +69,10 @@ import EventDetailsHeader from "./EventDetailsHeader.vue";
 import { createResource } from "frappe-ui";
 import { useBookingFormStorage } from "../composables/useBookingFormStorage.js";
 import { useRouter } from "vue-router";
+import { userResource } from "../data/user.js";
 
 const router = useRouter();
 
-// Props are passed from the parent context (e.g., your main app or page)
 const props = defineProps({
 	availableAddOns: {
 		type: Array,
@@ -98,6 +98,11 @@ const props = defineProps({
 // --- STATE ---
 // Use the booking form storage composable
 const { attendees, attendeeIdCounter } = useBookingFormStorage();
+
+// Ensure user data is loaded
+if (!userResource.data) {
+	userResource.fetch();
+}
 
 // --- HELPERS / DERIVED STATE ---
 const addOnsMap = computed(() =>
@@ -220,7 +225,15 @@ watch(
 	() => props.availableTicketTypes,
 	() => {
 		if (attendees.value.length === 0 && props.availableTicketTypes.length > 0) {
-			attendees.value.push(createNewAttendee());
+			const newAttendee = createNewAttendee();
+
+			// Pre-populate with current user's information if available
+			if (userResource.data) {
+				newAttendee.full_name = userResource.data.full_name || "";
+				newAttendee.email = userResource.data.email || "";
+			}
+
+			attendees.value.push(newAttendee);
 		}
 	},
 	{ immediate: true }
