@@ -47,12 +47,20 @@ def create_customer(user_details):
 
 def make_payment_request(customer, event_booking, phone_number=None):
     try:
-        invoice_id = frappe.db.get_value(
+        invoice = None
+        if not frappe.db.exists(
             "Sales Invoice",
             {"event_booking": event_booking.name, "docstatus": ["!=", 2]},
-            "name",
-        )
-        invoice = frappe.get_doc("Sales Invoice", invoice_id)
+        ):
+            invoice = make_invoice(event_booking, customer)
+        else:
+            invoice_id = frappe.db.get_value(
+                "Sales Invoice",
+                {"event_booking": event_booking.name, "docstatus": ["!=", 2]},
+                "name",
+            )
+            invoice = frappe.get_doc("Sales Invoice", invoice_id)
+
         payment_gateway = get_payment_gateway_from_mop(
             event_booking.mode_of_payment, event_booking.company
         )

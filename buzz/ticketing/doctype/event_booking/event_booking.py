@@ -7,9 +7,9 @@ from frappe.model.document import Document
 
 from buzz.payments import mark_payment_as_received
 from buzz.payment import (
-make_invoice,
-create_customer,
-make_payment_request,
+    make_invoice,
+    create_customer,
+    make_payment_request,
 )
 
 
@@ -49,6 +49,16 @@ class EventBooking(Document):
         self.set_total()
         self.apply_taxes_if_applicable()
         self.customer = self.make_customer()
+        self.set_missing_values()
+
+    def set_missing_values(self):
+        if not self.payment_gateway:
+            event_doc = frappe.get_doc("Event", self.event)
+            self.payment_gateway = event_doc.payment_gateway
+
+        if not self.mode_of_payment:
+            event_doc = frappe.get_doc("Event", self.event)
+            self.mode_of_payment = event_doc.mode_of_payment
 
     def set_currency(self):
         self.currency = self.attendees[0].currency
@@ -62,19 +72,7 @@ class EventBooking(Document):
                 attendee.number_of_add_ons = attendee.get_number_of_add_ons()
                 self.net_amount += attendee.add_on_total
         self.total_amount = self.net_amount
-    def set_total(self):
-        self.net_amount = 0
-        for attendee in self.attendees:
-            self.net_amount += attendee.amount
-            if attendee.add_ons:
-                attendee.add_on_total = attendee.get_add_on_total()
-                attendee.number_of_add_ons = attendee.get_number_of_add_ons()
-                self.net_amount += attendee.add_on_total
-        self.total_amount = self.net_amount
 
-    def apply_taxes_if_applicable(self):
-        if self.currency != "INR":
-            return
     def apply_taxes_if_applicable(self):
         if self.currency != "INR":
             return
@@ -92,12 +90,6 @@ class EventBooking(Document):
             self.tax_amount = self.net_amount * (self.tax_percentage / 100)
             self.total_amount += self.tax_amount
 
-    def validate_ticket_availability(self):
-        num_tickets_by_type = {}
-        for attendee in self.attendees:
-            if attendee.ticket_type not in num_tickets_by_type:
-                num_tickets_by_type[attendee.ticket_type] = 0
-            num_tickets_by_type[attendee.ticket_type] += 1
     def validate_ticket_availability(self):
         num_tickets_by_type = {}
         for attendee in self.attendees:
@@ -136,29 +128,10 @@ class EventBooking(Document):
                 attendee.amount = price
             if not attendee.currency:
                 attendee.currency = currency
-    def fetch_amounts_from_ticket_types(self):
-        for attendee in self.attendees:
-            price, currency = frappe.get_cached_value(
-                "Event Ticket Type", attendee.ticket_type, ["price", "currency"]
-            )
-            if attendee.amount is None:
-                attendee.amount = price
-            if not attendee.currency:
-                attendee.currency = currency
 
     def on_submit(self):
         self.generate_tickets()
-    def on_submit(self):
-        self.generate_tickets()
 
-    def generate_tickets(self):
-        for attendee in self.attendees:
-            ticket = frappe.new_doc("Event Ticket")
-            ticket.event = self.event
-            ticket.booking = self.name
-            ticket.ticket_type = attendee.ticket_type
-            ticket.attendee_name = attendee.full_name
-            ticket.attendee_email = attendee.email
     def generate_tickets(self):
         for attendee in self.attendees:
             ticket = frappe.new_doc("Event Ticket")
@@ -187,22 +160,7 @@ class EventBooking(Document):
         if payment_status in ("Authorized", "Completed"):
             # payment success, submit the booking
             self.update_payment_record()
-    def on_payment_authorized(self, payment_status: str):
-        if payment_status in ("Authorized", "Completed"):
-            # payment success, submit the booking
-            self.update_payment_record()
 
-    def update_payment_record(self):
-        try:
-            mark_payment_as_received(self.doctype, self.name)
-            self.flags.ignore_permissions = 1
-            self.submit()
-        except Exception:
-            frappe.log_error(frappe.get_traceback(), _("Booking Failed"))
-            frappe.throw(frappe._("Booking Failed! Please contact support."))
-
-    def make_customer(self):
-        user = frappe.get_doc("User", frappe.session.user)
     def update_payment_record(self):
         try:
             mark_payment_as_received(self.doctype, self.name)
@@ -249,8 +207,7 @@ class EventBooking(Document):
             print("Creating new customer")
             customer = create_customer(user_details)
             customer = frappe.get_doc("Customer", customer)
-        return customer
-
+        return customer.name
 
     @frappe.whitelist()
     def initialize_payment(self, phone_number=None):
