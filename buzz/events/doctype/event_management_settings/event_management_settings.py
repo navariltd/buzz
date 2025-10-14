@@ -20,6 +20,7 @@ class EventManagementSettings(Document):
 		allow_transfer_ticket_before_event_start_days: DF.Int
 		apply_gst_on_bookings: DF.Check
 		gst_percentage: DF.Percent
+		support_email: DF.Data | None
 	# end: auto-generated types
 
 	def validate(self):

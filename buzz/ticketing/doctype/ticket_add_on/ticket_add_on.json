@@ -8,6 +8,7 @@
   "title",
   "event",
   "price",
+  "description",
   "column_break_lbak",
   "currency",
   "user_selects_option",
@@ -58,12 +59,17 @@
    "fieldname": "user_selects_option",
    "fieldtype": "Check",
    "label": "User Selects Option?"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-26 12:54:26.587785",
+ "modified": "2025-10-10 15:08:34.339344",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Ticket Add-on",
@@ -92,6 +98,16 @@
    "role": "Event Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Buzz User",
+   "select": 1,
+   "share": 1
   }
  ],
  "quick_entry": 1,

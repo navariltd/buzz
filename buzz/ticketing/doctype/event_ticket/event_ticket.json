@@ -1,161 +1,172 @@
 {
- "actions": [],
- "allow_rename": 1,
- "autoname": "format:TKT-{YYYY}-{MM}-{event}-{####}",
- "creation": "2025-07-22 19:49:30.385500",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "attendee_name",
-  "event",
-  "booking",
-  "coupon_used",
-  "column_break_sqmr",
-  "attendee_email",
-  "ticket_type",
-  "qr_code",
-  "section_break_cgvb",
-  "add_ons",
-  "section_break_yzvi",
-  "amended_from"
- ],
- "fields": [
-  {
-   "allow_on_submit": 1,
-   "fieldname": "attendee_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Attendee Name",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "ticket_type.event",
-   "fieldname": "event",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Event",
-   "options": "FE Event"
-  },
-  {
-   "fieldname": "booking",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Booking",
-   "options": "Event Booking"
-  },
-  {
-   "fieldname": "column_break_sqmr",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ticket_type",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Ticket Type",
-   "options": "Event Ticket Type",
-   "reqd": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Event Ticket",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "section_break_yzvi",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "qr_code",
-   "fieldtype": "Attach Image",
-   "label": "QR Code",
-   "no_copy": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "add_ons",
-   "fieldtype": "Table",
-   "label": "Add Ons",
-   "options": "Ticket Add-on Value"
-  },
-  {
-   "fieldname": "section_break_cgvb",
-   "fieldtype": "Section Break"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "attendee_email",
-   "fieldtype": "Data",
-   "label": "Attendee Email",
-   "options": "Email",
-   "reqd": 1
-  },
-  {
-   "fieldname": "coupon_used",
-   "fieldtype": "Link",
-   "label": "Coupon Used ",
-   "options": "Bulk Ticket Coupon"
-  }
- ],
- "grid_page_length": 50,
- "image_field": "qr_code",
- "index_web_pages_for_search": 1,
- "is_submittable": 1,
- "links": [
-  {
-   "link_doctype": "Event Check In",
-   "link_fieldname": "ticket"
-  }
- ],
- "modified": "2025-10-10 12:27:40.649971",
- "modified_by": "Administrator",
- "module": "Ticketing",
- "name": "Event Ticket",
- "naming_rule": "Expression",
- "owner": "Administrator",
- "permissions": [
-  {
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Event Manager",
-   "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  }
- ],
- "row_format": "Dynamic",
- "search_fields": "event,ticket_type",
- "show_title_field_in_link": 1,
- "sort_field": "creation",
- "sort_order": "DESC",
- "states": [],
- "title_field": "attendee_name"
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "format:TKT-{YYYY}-{MM}-{event}-{####}",
+  "creation": "2025-07-22 19:49:30.385500",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "attendee_name",
+    "event",
+    "booking",
+    "coupon_used",
+    "column_break_sqmr",
+    "attendee_email",
+    "ticket_type",
+    "qr_code",
+    "section_break_cgvb",
+    "add_ons",
+    "section_break_yzvi",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "allow_on_submit": 1,
+      "fieldname": "attendee_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Attendee Name",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "ticket_type.event",
+      "fieldname": "event",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Event",
+      "options": "FE Event"
+    },
+    {
+      "fieldname": "booking",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Booking",
+      "options": "Event Booking"
+    },
+    {
+      "fieldname": "column_break_sqmr",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "ticket_type",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Ticket Type",
+      "options": "Event Ticket Type",
+      "reqd": 1
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Event Ticket",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "section_break_yzvi",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "qr_code",
+      "fieldtype": "Attach Image",
+      "label": "QR Code",
+      "no_copy": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "add_ons",
+      "fieldtype": "Table",
+      "label": "Add Ons",
+      "options": "Ticket Add-on Value"
+    },
+    {
+      "fieldname": "section_break_cgvb",
+      "fieldtype": "Section Break"
+    },
+    {
+      "allow_on_submit": 1,
+      "fieldname": "attendee_email",
+      "fieldtype": "Data",
+      "label": "Attendee Email",
+      "options": "Email",
+      "reqd": 1
+    },
+    {
+      "fieldname": "coupon_used",
+      "fieldtype": "Link",
+      "label": "Coupon Used ",
+      "options": "Bulk Ticket Coupon"
+    }
+  ],
+  "grid_page_length": 50,
+  "image_field": "qr_code",
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [
+    {
+      "link_doctype": "Event Check In",
+      "link_fieldname": "ticket"
+    }
+  ],
+  "modified": "2025-10-10 14:43:48.369527",
+  "modified_by": "Administrator",
+  "module": "Ticketing",
+  "name": "Event Ticket",
+  "naming_rule": "Expression",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Event Manager",
+      "select": 1,
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Buzz User",
+      "select": 1,
+      "share": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "search_fields": "event,ticket_type",
+  "show_title_field_in_link": 1,
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "attendee_name"
 }

@@ -1,214 +1,228 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2025-07-22 19:39:32.418375",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "event",
-  "company",
-  "column_break_cjxu",
-  "user",
-  "customer",
-  "mode_of_payment",
-  "payment_gateway",
-  "section_break_xvkp",
-  "attendees",
-  "section_break_tsys",
-  "net_amount",
-  "tax_percentage",
-  "tax_amount",
-  "column_break_naeh",
-  "total_amount",
-  "currency",
-  "section_break_sdfp",
-  "amended_from"
- ],
- "fields": [
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Event Booking",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "section_break_sdfp",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_xvkp",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "attendees",
-   "fieldtype": "Table",
-   "label": "Attendees",
-   "options": "Event Booking Attendee",
-   "reqd": 1
-  },
-  {
-   "fieldname": "event",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Event",
-   "options": "FE Event",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_cjxu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "user",
-   "fieldtype": "Link",
-   "label": "User",
-   "options": "User",
-   "reqd": 1
-  },
-  {
-   "fieldname": "section_break_tsys",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "total_amount",
-   "fieldtype": "Currency",
-   "label": "Total Amount",
-   "non_negative": 1,
-   "options": "currency",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_naeh",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "net_amount",
-   "fieldtype": "Currency",
-   "label": "Net Amount",
-   "options": "currency",
-   "read_only": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "tax_percentage",
-   "fieldtype": "Percent",
-   "label": "Tax Percentage",
-   "read_only": 1
-  },
-  {
-   "fieldname": "tax_amount",
-   "fieldtype": "Currency",
-   "label": "Tax Amount",
-   "options": "currency",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "event.company",
-   "fieldname": "company",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Company",
-   "reqd": 1
-  },
-  {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "payment_gateway",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Payment Gateway",
-   "options": "Payment Gateway"
-  },
-  {
-   "fieldname": "mode_of_payment",
-   "fieldtype": "Link",
-   "label": "Mode of Payment",
-   "options": "Mode of Payment",
-   "reqd": 1
-  }
- ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
- "is_submittable": 1,
- "links": [
-  {
-   "link_doctype": "Event Ticket",
-   "link_fieldname": "booking"
-  },
-  {
-   "link_doctype": "Event Payment",
-   "link_fieldname": "reference_docname"
-  },
-  {
-   "link_doctype": "Payment Request",
-   "link_fieldname": "reference_name"
-  },
-  {
-   "link_doctype": "Sales Invoice",
-   "link_fieldname": "event_booking"
-  }
- ],
- "modified": "2025-10-08 14:59:50.872859",
- "modified_by": "Administrator",
- "module": "Ticketing",
- "name": "Event Booking",
- "owner": "Administrator",
- "permissions": [
-  {
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
-   "cancel": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Event Manager",
-   "select": 1,
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  }
- ],
- "row_format": "Dynamic",
- "search_fields": "event,total_amount,currency",
- "show_title_field_in_link": 1,
- "sort_field": "creation",
- "sort_order": "DESC",
- "states": [],
- "title_field": "user"
+  "actions": [],
+  "allow_rename": 1,
+  "creation": "2025-07-22 19:39:32.418375",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "event",
+    "company",
+    "column_break_cjxu",
+    "user",
+    "customer",
+    "mode_of_payment",
+    "payment_gateway",
+    "section_break_xvkp",
+    "attendees",
+    "section_break_tsys",
+    "net_amount",
+    "tax_percentage",
+    "tax_amount",
+    "column_break_naeh",
+    "total_amount",
+    "currency",
+    "section_break_sdfp",
+    "amended_from"
+  ],
+  "fields": [
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Event Booking",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "section_break_sdfp",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "section_break_xvkp",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "attendees",
+      "fieldtype": "Table",
+      "label": "Attendees",
+      "options": "Event Booking Attendee",
+      "reqd": 1
+    },
+    {
+      "fieldname": "event",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Event",
+      "options": "FE Event",
+      "reqd": 1
+    },
+    {
+      "fieldname": "column_break_cjxu",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "label": "User",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "section_break_tsys",
+      "fieldtype": "Section Break"
+    },
+    {
+      "default": "0",
+      "fieldname": "total_amount",
+      "fieldtype": "Currency",
+      "label": "Total Amount",
+      "non_negative": 1,
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_naeh",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "read_only": 1,
+      "reqd": 1
+    },
+    {
+      "fieldname": "net_amount",
+      "fieldtype": "Currency",
+      "label": "Net Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "tax_percentage",
+      "fieldtype": "Percent",
+      "label": "Tax Percentage",
+      "read_only": 1
+    },
+    {
+      "fieldname": "tax_amount",
+      "fieldtype": "Currency",
+      "label": "Tax Amount",
+      "options": "currency",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "event.company",
+      "fieldname": "company",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Company",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer"
+    },
+    {
+      "allow_on_submit": 1,
+      "fieldname": "payment_gateway",
+      "fieldtype": "Link",
+      "hidden": 1,
+      "label": "Payment Gateway",
+      "options": "Payment Gateway"
+    },
+    {
+      "fieldname": "mode_of_payment",
+      "fieldtype": "Link",
+      "label": "Mode of Payment",
+      "options": "Mode of Payment",
+      "reqd": 1
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "is_submittable": 1,
+  "links": [
+    {
+      "link_doctype": "Event Ticket",
+      "link_fieldname": "booking"
+    },
+    {
+      "link_doctype": "Event Payment",
+      "link_fieldname": "reference_docname"
+    },
+    {
+      "link_doctype": "Payment Request",
+      "link_fieldname": "reference_name"
+    },
+    {
+      "link_doctype": "Sales Invoice",
+      "link_fieldname": "event_booking"
+    }
+  ],
+  "modified": "2025-10-10 14:43:17.685806",
+  "modified_by": "Administrator",
+  "module": "Ticketing",
+  "name": "Event Booking",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "select": 1,
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Event Manager",
+      "select": 1,
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Buzz User",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "search_fields": "event,total_amount,currency",
+  "show_title_field_in_link": 1,
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "user"
 }

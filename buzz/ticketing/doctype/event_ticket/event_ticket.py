@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-from buzz.ticketing.doctype.event_ticket_type.event_ticket_type import EventTicketType
+from frappe.core.api.user_invitation import invite_by_email
 
 
 class EventTicket(Document):
