@@ -53,11 +53,11 @@ class EventBooking(Document):
 
     def set_missing_values(self):
         if not self.payment_gateway:
-            event_doc = frappe.get_doc("Event", self.event)
+            event_doc = frappe.get_doc("FE Event", self.event)
             self.payment_gateway = event_doc.payment_gateway
 
         if not self.mode_of_payment:
-            event_doc = frappe.get_doc("Event", self.event)
+            event_doc = frappe.get_doc("FE Event", self.event)
             self.mode_of_payment = event_doc.mode_of_payment
 
     def set_currency(self):
