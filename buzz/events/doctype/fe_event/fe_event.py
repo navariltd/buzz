@@ -47,7 +47,6 @@ class FEEvent(Document):
 
 	def validate(self):
 		self.validate_route()
-		self.create_attendee_registration()
 		self.create_event_route()
 
 	def validate_route(self):
@@ -58,21 +57,6 @@ class FEEvent(Document):
 	def check_in(self, ticket_id: str, track: str | None = None):
 		frappe.get_doc({"doctype": "Event Check In", "ticket": ticket_id, "track": track}).insert().submit()
 
-	def create_attendee_registration(self):
-		if not self.is_ticketed:
-			if not frappe.db.exists("Attendee Registration", {"event": self.name}):
-				ar = frappe.get_doc(
-					{
-						"doctype": "Attendee Registration",
-						"event": self.name,
-						"event_name": self.title,
-						"start_date": self.start_date,
-						"start_time": self.start_time,
-						"end_date": self.end_date,
-						"end_time": self.end_time,
-					}
-				)
-				ar.insert()
 
 	def create_event_route(self):
 		self.route = self.title.lower().replace(" ", "-")
