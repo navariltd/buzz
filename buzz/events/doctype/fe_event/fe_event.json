@@ -326,14 +326,9 @@
    "group": "General",
    "link_doctype": "Additional Event Page",
    "link_fieldname": "event"
-  },
-  {
-   "group": "Event Registration",
-   "link_doctype": "Attendee Registration",
-   "link_fieldname": "event"
   }
  ],
- "modified": "2025-10-08 15:50:42.195459",
+ "modified": "2025-10-15 15:56:17.506047",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "FE Event",
