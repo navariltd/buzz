@@ -7,6 +7,13 @@
  "engine": "InnoDB",
  "field_order": [
   "address",
+  "column_break_kqaw",
+  "type",
+  "google_maps_embed_code",
+  "section_break_cexp",
+  "longitude",
+  "latitude",
+  "column_break_xfsv",
   "location"
  ],
  "fields": [
@@ -20,13 +27,54 @@
   {
    "fieldname": "location",
    "fieldtype": "Geolocation",
-   "label": "Location"
+   "label": "Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kqaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.type===\"Open Street Map\"",
+   "fieldname": "section_break_cexp",
+   "fieldtype": "Section Break",
+   "label": "Open Street Map"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "column_break_xfsv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Embed Google Maps\nOpen Street Map"
+  },
+  {
+   "depends_on": "eval:doc.type===\"Embed Google Maps\"",
+   "description": "Open a place on Google maps then click on share",
+   "fieldname": "google_maps_embed_code",
+   "fieldtype": "Code",
+   "label": "Google Maps Embed Code",
+   "options": "HTML"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-29 19:37:10.628647",
+ "modified": "2025-10-09 10:08:41.169559",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Venue",

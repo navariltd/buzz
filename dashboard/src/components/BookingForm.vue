@@ -47,11 +47,11 @@
 							<Button
 								variant="solid"
 								size="lg"
-								class="w-full mt-3"
+								class="w-full mt-6"
 								type="submit"
 								:loading="processBooking.loading"
 							>
-								{{ processBooking.loading ? "Processing..." : "Pay & Book" }}
+								{{ processBooking.loading ? "Processing..." : (finalTotal > 0 ? "Pay & Book" : "Book Tickets") }}
 							</Button>
 						</div>
 					</div>
@@ -68,8 +68,11 @@ import BookingSummary from "./BookingSummary.vue";
 import EventDetailsHeader from "./EventDetailsHeader.vue";
 import { createResource } from "frappe-ui";
 import { useBookingFormStorage } from "../composables/useBookingFormStorage.js";
+import { useRouter } from "vue-router";
+import { userResource } from "../data/user.js";
 
-// Props are passed from the parent context (e.g., your main app or page)
+const router = useRouter();
+
 const props = defineProps({
 	availableAddOns: {
 		type: Array,
@@ -96,6 +99,11 @@ const props = defineProps({
 // Use the booking form storage composable
 const { attendees, attendeeIdCounter } = useBookingFormStorage();
 
+// Ensure user data is loaded
+if (!userResource.data) {
+	userResource.fetch();
+}
+
 // --- HELPERS / DERIVED STATE ---
 const addOnsMap = computed(() =>
 	Object.fromEntries(props.availableAddOns.map((a) => [a.name, a]))
@@ -112,7 +120,8 @@ const createNewAttendee = () => {
 		id: attendeeIdCounter.value,
 		full_name: "",
 		email: "",
-		ticket_type: props.availableTicketTypes[0]?.name || "",
+		// Auto-select ticket type if there's only one available
+		ticket_type: props.availableTicketTypes.length === 1 ? props.availableTicketTypes[0]?.name : (props.availableTicketTypes[0]?.name || ""),
 		add_ons: {},
 	};
 	for (const addOn of props.availableAddOns) {
@@ -216,7 +225,15 @@ watch(
 	() => props.availableTicketTypes,
 	() => {
 		if (attendees.value.length === 0 && props.availableTicketTypes.length > 0) {
-			attendees.value.push(createNewAttendee());
+			const newAttendee = createNewAttendee();
+
+			// Pre-populate with current user's information if available
+			if (userResource.data) {
+				newAttendee.full_name = userResource.data.full_name || "";
+				newAttendee.email = userResource.data.email || "";
+			}
+
+			attendees.value.push(newAttendee);
 		}
 	},
 	{ immediate: true }
@@ -244,6 +261,22 @@ watch(
 		}
 	},
 	{ immediate: true, deep: true }
+);
+
+// Auto-select ticket type if there's only one available
+watch(
+	() => props.availableTicketTypes,
+	(newTicketTypes) => {
+		if (newTicketTypes && newTicketTypes.length === 1) {
+			// Auto-select the only ticket type for all attendees
+			for (const attendee of attendees.value) {
+				if (!attendee.ticket_type || attendee.ticket_type === "") {
+					attendee.ticket_type = newTicketTypes[0].name;
+				}
+			}
+		}
+	},
+	{ immediate: true }
 );
 
 const processBooking = createResource({
@@ -277,9 +310,12 @@ async function submit() {
 
 	processBooking.submit(final_payload, {
 		onSuccess: (data) => {
-			// Redirect to payment page, don't clear data yet
-			// Data will be cleared when payment is successful
-			window.location.href = data;
+			if (data.payment_link) {
+				window.location.href = data.payment_link;
+			} else {
+				// free event
+				router.replace(`/bookings/${data.booking_name}`);
+			}
 		},
 	});
 }

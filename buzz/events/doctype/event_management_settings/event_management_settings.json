@@ -5,6 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "general_section",
+  "support_email",
   "ticketing_section",
   "allow_transfer_ticket_before_event_start_days",
   "column_break_ehsr",
@@ -68,13 +70,25 @@
    "fieldname": "gst_percentage",
    "fieldtype": "Percent",
    "label": "GST Percentage"
+  },
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "description": "Will be linked in emails, etc.",
+   "fieldname": "support_email",
+   "fieldtype": "Data",
+   "label": "Support Email",
+   "options": "Email"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-21 11:15:47.182655",
+ "modified": "2025-10-09 14:29:56.127215",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Management Settings",

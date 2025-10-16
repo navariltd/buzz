@@ -8,9 +8,11 @@
   "event",
   "company_name",
   "company_logo",
+  "website",
   "column_break_fhgg",
   "status",
-  "tier"
+  "tier",
+  "country"
  ],
  "fields": [
   {
@@ -54,6 +56,18 @@
    "label": "Event",
    "options": "FE Event",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
   }
  ],
  "grid_page_length": 50,
@@ -69,7 +83,7 @@
    "link_fieldname": "reference_docname"
   }
  ],
- "modified": "2025-08-19 13:54:49.025028",
+ "modified": "2025-10-09 18:52:42.004977",
  "modified_by": "Administrator",
  "module": "Proposals",
  "name": "Sponsorship Enquiry",

@@ -7,9 +7,11 @@
  "field_order": [
   "company_name",
   "company_logo",
+  "website",
   "column_break_ozou",
   "event",
   "tier",
+  "country",
   "additional_section",
   "enquiry"
  ],
@@ -55,13 +57,25 @@
    "fieldtype": "Link",
    "label": "Enquiry",
    "options": "Sponsorship Enquiry"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
   }
  ],
  "grid_page_length": 50,
  "image_field": "company_logo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-13 21:10:52.146454",
+ "modified": "2025-10-09 18:53:04.166283",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Sponsor",
