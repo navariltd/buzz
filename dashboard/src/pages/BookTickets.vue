@@ -3,13 +3,15 @@
 		<div class="w-8">
 			<Spinner v-if="eventBookingResource.loading" />
 		</div>
-		<BookingForm
-			v-if="eventBookingData.availableAddOns && eventBookingData.availableTicketTypes"
-			:availableAddOns="eventBookingData.availableAddOns"
-			:availableTicketTypes="eventBookingData.availableTicketTypes"
-			:gstSettings="eventBookingData.gstSettings"
-			:eventDetails="eventBookingData.eventDetails"
-		/>
+		<div>
+			<BookingForm
+				v-if="eventBookingData.availableAddOns && eventBookingData.availableTicketTypes"
+				:availableAddOns="eventBookingData.availableAddOns"
+				:availableTicketTypes="eventBookingData.availableTicketTypes"
+				:gstSettings="eventBookingData.gstSettings"
+				:eventDetails="eventBookingData.eventDetails"
+			/>
+		</div>
 	</div>
 </template>
 

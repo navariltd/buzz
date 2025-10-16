@@ -16,6 +16,7 @@ declare module 'vue' {
     BookingForm: typeof import('./src/components/BookingForm.vue')['default']
     BookingHeader: typeof import('./src/components/BookingHeader.vue')['default']
     BookingSummary: typeof import('./src/components/BookingSummary.vue')['default']
+    BuzzLogo: typeof import('./src/components/common/BuzzLogo.vue')['default']
     CancellationRequestDialog: typeof import('./src/components/CancellationRequestDialog.vue')['default']
     CancellationRequestNotice: typeof import('./src/components/CancellationRequestNotice.vue')['default']
     EventDetailsHeader: typeof import('./src/components/EventDetailsHeader.vue')['default']

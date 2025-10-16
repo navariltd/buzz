@@ -33,7 +33,7 @@ export const session = reactive({
 		onSuccess() {
 			userResource.reset();
 			session.user = sessionUser();
-			router.replace({ name: "Login" });
+			window.location.href = "/login?redirect=/dashboard";
 		},
 	}),
 	user: sessionUser(),

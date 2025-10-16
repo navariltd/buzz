@@ -22,6 +22,13 @@ export function formatPrice(price, currencyCode = "INR", locale = "en-US") {
 	return formatCurrency(price, currencyCode, locale);
 }
 
+export function formatPriceOrFree(price, currencyCode = "INR", locale = "en-US") {
+	if (price === 0 || price === "0") {
+		return "Free";
+	}
+	return formatPrice(price, currencyCode, locale);
+}
+
 export function getCurrencySymbol(currencyCode, locale = "en-US") {
 	try {
 		const formatter = new Intl.NumberFormat(locale, {
