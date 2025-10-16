@@ -20,6 +20,7 @@ class EventBooking(Document):
     # This code is auto-generated. Do not modify anything in this block.
 
     from typing import TYPE_CHECKING
+    from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
         from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
@@ -48,6 +49,16 @@ class EventBooking(Document):
         self.set_total()
         self.apply_taxes_if_applicable()
         self.customer = self.make_customer()
+        self.set_missing_values()
+
+    def set_missing_values(self):
+        if not self.payment_gateway:
+            event_doc = frappe.get_doc("FE Event", self.event)
+            self.payment_gateway = event_doc.payment_gateway
+
+        if not self.mode_of_payment:
+            event_doc = frappe.get_doc("FE Event", self.event)
+            self.mode_of_payment = event_doc.mode_of_payment
 
     def set_currency(self):
         self.currency = self.attendees[0].currency
@@ -137,13 +148,6 @@ class EventBooking(Document):
                 ticket.add_ons = add_ons_list
             ticket.flags.ignore_permissions = 1
             ticket.insert().submit()
-            if attendee.add_ons:
-                add_ons_list = frappe.get_cached_doc(
-                    "Attendee Ticket Add-on", attendee.add_ons
-                ).add_ons
-                ticket.add_ons = add_ons_list
-            ticket.flags.ignore_permissions = 1
-            ticket.insert().submit()
 
     def on_payment_authorized(self, payment_status: str):
         if payment_status in ("Authorized", "Completed"):
@@ -169,22 +173,13 @@ class EventBooking(Document):
                 "mobile": user.phone,
             }
         )
-        user_details = frappe._dict(
-            {
-                "fullname": user.full_name,
-                "email": user.email,
-                "mobile": user.phone,
-            }
-        )
+   
 
         # Try to find customer by email_id
         customer_name = frappe.db.get_value(
             "Customer", {"email_id": user.email}, "name"
         )
-        # Try to find customer by email_id
-        customer_name = frappe.db.get_value(
-            "Customer", {"email_id": user.email}, "name"
-        )
+
 
         if self.customer:
             customer = frappe.get_doc("Customer", self.customer)
@@ -196,7 +191,7 @@ class EventBooking(Document):
             print("Creating new customer")
             customer = create_customer(user_details)
             customer = frappe.get_doc("Customer", customer)
-        return customer
+        return customer.name
 
     @frappe.whitelist()
     def initialize_payment(self, phone_number=None):
@@ -206,13 +201,6 @@ class EventBooking(Document):
             customer = frappe.get_doc("Customer", self.customer)
             payment_request = make_payment_request(customer, self, phone_number)
 
-        except Exception as e:
-            frappe.log_error(frappe.get_traceback(), _("Payment Initialization Failed"))
-            frappe.throw(
-                frappe._(
-                    "There was an error in processing your payment. Please contact support."
-                )
-            )
         except Exception as e:
             frappe.log_error(frappe.get_traceback(), _("Payment Initialization Failed"))
             frappe.throw(

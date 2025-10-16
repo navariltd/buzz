@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-from frappe.core.api.user_invitation import invite_by_email
+from buzz.ticketing.doctype.event_ticket_type.event_ticket_type import EventTicketType
 
 
 class EventTicket(Document):
@@ -14,9 +14,7 @@ class EventTicket(Document):
     from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
-        from buzz.ticketing.doctype.ticket_add_on_value.ticket_add_on_value import (
-            TicketAddonValue,
-        )
+        from buzz.ticketing.doctype.ticket_add_on_value.ticket_add_on_value import TicketAddonValue
         from frappe.types import DF
 
         add_ons: DF.Table[TicketAddonValue]
