@@ -16,16 +16,11 @@ from buzz.payment import (
 class EventBooking(Document):
     # begin: auto-generated types
     # This code is auto-generated. Do not modify anything in this block.
-    # begin: auto-generated types
-    # This code is auto-generated. Do not modify anything in this block.
 
-    from typing import TYPE_CHECKING
     from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
-        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
-            EventBookingAttendee,
-        )
+        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import EventBookingAttendee
         from frappe.types import DF
 
         amended_from: DF.Link | None
@@ -34,6 +29,7 @@ class EventBooking(Document):
         currency: DF.Link
         customer: DF.Link | None
         event: DF.Link
+        mode_of_payment: DF.Link
         net_amount: DF.Currency
         payment_gateway: DF.Link | None
         tax_amount: DF.Currency
