@@ -50,6 +50,7 @@ class FEEvent(Document):
     def validate(self):
         self.validate_route()
         self.create_event_route()
+        self.general_admission_ticket_type()
 
     def validate_route(self):
         if self.is_published and not self.route:
@@ -62,7 +63,6 @@ class FEEvent(Document):
         frappe.get_doc(
             {"doctype": "Event Check In", "ticket": ticket_id, "track": track}
         ).insert().submit()
-
 
     def create_event_route(self):
         self.route = self.title.lower().replace(" ", "-")
@@ -79,3 +79,20 @@ class FEEvent(Document):
             frappe.get_doc({**record, "event": self.name}).insert(
                 ignore_permissions=True
             )
+
+    def general_admission_ticket_type(self):
+        if frappe.db.exists(
+            "Event Ticket Type", {"event": self.name, "title": "General Admission"}
+        ):
+            return
+
+        if not self.is_ticketed:
+            general_admission = frappe.get_doc(
+                {
+                    "doctype": "Event Ticket Type",
+                    "event": self.name,
+                    "title": "General Admission",
+                    "price": 0,
+                }
+            )
+            general_admission.insert(ignore_permissions=True)
