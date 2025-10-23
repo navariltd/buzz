@@ -29,7 +29,7 @@ class EventBooking(Document):
         currency: DF.Link
         customer: DF.Link | None
         event: DF.Link
-        mode_of_payment: DF.Link
+        mode_of_payment: DF.Link | None
         net_amount: DF.Currency
         payment_gateway: DF.Link | None
         tax_amount: DF.Currency
