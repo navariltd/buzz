@@ -13,7 +13,9 @@
   "section_break_yqfb",
   "description",
   "column_break_kemm",
-  "speakers"
+  "speakers",
+  "section_break_ouiw",
+  "phone"
  ],
  "fields": [
   {
@@ -44,7 +46,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Event",
-   "options": "FE Event",
+   "options": "Buzz Event",
    "reqd": 1
   },
   {
@@ -65,12 +67,21 @@
    "fieldtype": "Table",
    "label": "Speakers",
    "options": "Proposal Speaker"
+  },
+  {
+   "fieldname": "section_break_ouiw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-09 18:59:47.106852",
+ "modified": "2025-10-28 17:00:54.928209",
  "modified_by": "Administrator",
  "module": "Proposals",
  "name": "Talk Proposal",

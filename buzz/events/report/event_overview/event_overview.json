@@ -16,7 +16,7 @@
  "name": "Event Overview",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "FE Event",
+ "ref_doctype": "Buzz Event",
  "report_name": "Event Overview",
  "report_type": "Script Report",
  "roles": [

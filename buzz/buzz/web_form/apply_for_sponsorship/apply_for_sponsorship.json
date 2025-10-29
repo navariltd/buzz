@@ -24,7 +24,7 @@
  "list_columns": [],
  "login_required": 1,
  "max_attachment_size": 5,
- "modified": "2025-10-10 06:12:41.087247",
+ "modified": "2025-10-28 17:42:36.033471",
  "modified_by": "Administrator",
  "module": "Buzz",
  "name": "apply-for-sponsorship",
@@ -45,7 +45,7 @@
    "label": "Event",
    "max_length": 0,
    "max_value": 0,
-   "options": "FE Event",
+   "options": "Buzz Event",
    "precision": "",
    "read_only": 0,
    "reqd": 1,
@@ -115,6 +115,19 @@
    "precision": "",
    "read_only": 0,
    "reqd": 1,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "hidden": 0,
+   "label": "Phone Number",
+   "max_length": 0,
+   "max_value": 0,
+   "precision": "",
+   "read_only": 0,
+   "reqd": 0,
    "show_in_filter": 0
   }
  ]

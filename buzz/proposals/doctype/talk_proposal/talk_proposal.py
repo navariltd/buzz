@@ -18,6 +18,7 @@ class TalkProposal(Document):
 
 		description: DF.TextEditor | None
 		event: DF.Link
+		phone: DF.Phone | None
 		speakers: DF.Table[ProposalSpeaker]
 		status: DF.Literal["Review Pending", "Shortlisted", "Approved", "Rejected"]
 		submitted_by: DF.Link | None

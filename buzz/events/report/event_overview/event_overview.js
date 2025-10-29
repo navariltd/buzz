@@ -7,7 +7,7 @@ frappe.query_reports["Event Overview"] = {
 			fieldname: "event",
 			label: __("Event"),
 			fieldtype: "Link",
-			options: "FE Event",
+			options: "Buzz Event",
 		},
 	],
 };

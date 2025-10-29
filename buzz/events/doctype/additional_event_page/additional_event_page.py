@@ -27,7 +27,7 @@ class AdditionalEventPage(Document):
 	def validate_route(self):
 		if self.is_published and not self.route:
 			event_is_published, event_route = frappe.db.get_value(
-				"FE Event", self.event, ["is_published", "route"]
+				"Buzz Event", self.event, ["is_published", "route"]
 			)
 
 			if not event_is_published:

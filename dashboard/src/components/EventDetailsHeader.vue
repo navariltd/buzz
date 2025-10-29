@@ -11,7 +11,7 @@
 				:alt="eventDetails.title"
 				class="w-full h-full object-cover"
 			/>
-			<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+			<div class="absolute inset-0"></div>
 			<div class="absolute bottom-4 left-4 text-white">
 				<h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
 					{{ eventDetails.title }}
@@ -36,7 +36,6 @@
 						<p class="text-ink-gray-6 text-base">Date</p>
 					</div>
 					<div>
-
 						<p class="font-medium text-ink-gray-8">
 							{{ formatEventDates(eventDetails.start_date, eventDetails.end_date) }}
 						</p>
@@ -63,9 +62,7 @@
 						<p class="text-ink-gray-6 text-base">Venue</p>
 					</div>
 					<div>
-						<p class="font-medium text-ink-gray-8">{{
-							eventDetails.venue
-						}}</p>
+						<p class="font-medium text-ink-gray-8">{{ eventDetails.venue }}</p>
 					</div>
 				</div>
 			</div>

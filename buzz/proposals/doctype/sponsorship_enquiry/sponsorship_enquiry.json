@@ -12,7 +12,8 @@
   "column_break_fhgg",
   "status",
   "tier",
-  "country"
+  "country",
+  "phone"
  ],
  "fields": [
   {
@@ -54,7 +55,7 @@
    "fieldname": "event",
    "fieldtype": "Link",
    "label": "Event",
-   "options": "FE Event",
+   "options": "Buzz Event",
    "reqd": 1
   },
   {
@@ -68,6 +69,11 @@
    "fieldtype": "Link",
    "label": "Country",
    "options": "Country"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
   }
  ],
  "grid_page_length": 50,
@@ -83,7 +89,7 @@
    "link_fieldname": "reference_docname"
   }
  ],
- "modified": "2025-10-09 18:52:42.004977",
+ "modified": "2025-10-28 17:00:34.475703",
  "modified_by": "Administrator",
  "module": "Proposals",
  "name": "Sponsorship Enquiry",

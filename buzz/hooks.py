@@ -29,9 +29,11 @@ scheduler_events = {"daily": ["buzz.tasks.unpublish_ticket_types_after_last_date
 
 before_tests = "buzz.install.before_tests"
 
-
 doc_events = {
-    "User": {"after_insert": "buzz.utils.add_buzz_user_role"},
+    "User": {
+        "after_insert": "buzz.utils.add_buzz_user_role",
+        "on_update": "buzz.events.doctype.speaker_profile.speaker_profile.update_speaker_display_name",
+    },
     "GL Entry": {
         "after_insert": "buzz.buzz.overrides.server.gl_entry.on_update",
         "on_update": "buzz.buzz.overrides.server.gl_entry.on_update",
@@ -44,7 +46,6 @@ fixtures = [{"dt": "Role", "filters": {"name": "Buzz User"}}]
 user_invitation = {
     "allowed_roles": {"Event Manager": ["Buzz User"], "Buzz User": ["Buzz User"]}
 }
-
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [

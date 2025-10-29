@@ -34,9 +34,7 @@ class EventTicketType(Document):
 	@property
 	def tickets_sold(self) -> int:
 		"""Returns the number of tickets sold for this ticket type."""
-		return frappe.db.count(
-			"Event Ticket", {"ticket_type": self.name, "docstatus": 1}
-		)
+		return frappe.db.count("Event Ticket", {"ticket_type": self.name, "docstatus": 1})
 
 	@property
 	def remaining_tickets(self) -> int:
