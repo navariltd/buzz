@@ -16,12 +16,12 @@ def setup_test_records():
 		ignore_if_duplicate=True
 	)
 
-	test_event_exists = frappe.db.exists("FE Event", {"route": "test-route"})
+	test_event_exists = frappe.db.exists("Buzz Event", {"route": "test-route"})
 	if test_event_exists:
-		frappe.delete_doc("FE Event", test_event_exists, force=True)
+		frappe.delete_doc("Buzz Event", test_event_exists, force=True)
 	frappe.get_doc(
 		{
-			"doctype": "FE Event",
+			"doctype": "Buzz Event",
 			"category": test_category.name,
 			"venue": test_venue.name,
 			"host": test_host.name,

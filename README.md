@@ -7,7 +7,7 @@
   <a href="https://github.com/BuildWithHussain/buzz/commits/main"><img src="https://img.shields.io/github/commit-activity/m/BuildWithHussain/buzz" alt="GitHub commit activity"></a>
 </div>
 
-![FE Event DocType](.github/images/fe-event-main-form.png)
+![Buzz Event DocType](.github/images/fe-event-main-form.png)
 
 Open Source, Powerful, and Comprehensive Event Management Platform
 
@@ -19,7 +19,7 @@ Open Source, Powerful, and Comprehensive Event Management Platform
 
 ### The Main Entity
 
-The **FE Event** DocType/Form is the primary entity of the system. Once you have created an event, you can setup ticket types, sponsorship tiers, add-ons (like T-Shirts, Meals, etc.), schedule, and much more!
+The **Buzz Event** DocType/Form is the primary entity of the system. Once you have created an event, you can setup ticket types, sponsorship tiers, add-ons (like T-Shirts, Meals, etc.), schedule, and much more!
 
 ### Features
 
@@ -45,7 +45,7 @@ This app depends on Frappe's Payments app for online payments. You can select a 
 
 #### Ticket Management
 
-The benefits of having a "self-service" dashboard for attendees is that they can modify their bookings on their own (the deadlines can be configured from the **Event Management Settings**). For example, changing their T-Shirt Size after booking:
+The benefits of having a "self-service" dashboard for attendees is that they can modify their bookings on their own (the deadlines can be configured from the **Buzz Settings**). For example, changing their T-Shirt Size after booking:
 
 ![Change Add-on Preference](.github/images/ticket-updates.png)
 

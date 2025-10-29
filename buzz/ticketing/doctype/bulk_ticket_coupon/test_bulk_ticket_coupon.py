@@ -18,7 +18,7 @@ class IntegrationTestBulkTicketCoupon(IntegrationTestCase):
 	"""
 
 	def test_number_of_claimed_tickets_and_overage_prevention(self):
-		test_event = frappe.get_doc("FE Event", {"route": "test-route"})
+		test_event = frappe.get_doc("Buzz Event", {"route": "test-route"})
 		test_sponsor_ticket_type = frappe.get_doc(
 			{
 				"doctype": "Event Ticket Type",

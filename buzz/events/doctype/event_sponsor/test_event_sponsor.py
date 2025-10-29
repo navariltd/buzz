@@ -18,7 +18,7 @@ class IntegrationTestEventSponsor(IntegrationTestCase):
 	"""
 
 	def test_enquiry_to_sponsor_flow(self):
-		test_event = frappe.get_doc("FE Event", {"route": "test-route"})
+		test_event = frappe.get_doc("Buzz Event", {"route": "test-route"})
 		test_sponsorship_tier = frappe.get_doc(
 			{
 				"doctype": "Sponsorship Tier",

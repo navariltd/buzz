@@ -11,7 +11,7 @@
  "event": "Submit",
  "idx": 0,
  "is_standard": 1,
- "message": "{% set event_title = frappe.db.get_value(\"FE Event\", doc.event, \"title\") %}\n\n<p>Hi there!</p>\n\n<p>Your ticket is confirmed. We have attached it to this email. </p>\n\n<p>\nSee you at the <strong>{{ event_title }}</strong>!\n</p>\n",
+ "message": "{% set event_title = frappe.db.get_value(\"Buzz Event\", doc.event, \"title\") %}\n\n<p>Hi there!</p>\n\n<p>Your ticket is confirmed. We have attached it to this email. </p>\n\n<p>\nSee you at the <strong>{{ event_title }}</strong>!\n</p>\n",
  "message_type": "HTML",
  "minutes_offset": 0,
  "modified": "2025-08-09 11:44:04.011552",
@@ -26,5 +26,5 @@
  ],
  "send_system_notification": 0,
  "send_to_all_assignees": 0,
- "subject": "Here is your ticket to {{ frappe.db.get_value(\"FE Event\", doc.event, \"title\") }}!"
+ "subject": "Here is your ticket to {{ frappe.db.get_value(\"Buzz Event\", doc.event, \"title\") }}!"
 }

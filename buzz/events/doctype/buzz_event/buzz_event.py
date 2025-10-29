@@ -5,7 +5,7 @@ import frappe
 from frappe.model.document import Document
 
 
-class FEEvent(Document):
+class BuzzEvent(Document):
     # begin: auto-generated types
     # This code is auto-generated. Do not modify anything in this block.
 
@@ -24,7 +24,7 @@ class FEEvent(Document):
         company: DF.Link
         end_date: DF.Date | None
         end_time: DF.Time | None
-        event_access: DF.Literal["Public", "Private", "Members Only"]
+        event_access: DF.Literal["", "Public", "Private", "Members Only"]
         external_registration_page: DF.Check
         featured_speakers: DF.Table[EventFeaturedSpeaker]
         host: DF.Link
@@ -49,8 +49,8 @@ class FEEvent(Document):
 
     def validate(self):
         self.validate_route()
-        self.create_event_route()
         self.general_admission_ticket_type()
+        self.create_event_route()
 
     def validate_route(self):
         if self.is_published and not self.route:
@@ -67,32 +67,23 @@ class FEEvent(Document):
     def create_event_route(self):
         self.route = self.title.lower().replace(" ", "-")
 
-    def after_insert(self):
-        self.create_default_records()
-
-    def create_default_records(self):
-        records = [
-            {"doctype": "Sponsorship Tier", "title": "Normal"},
-            {"doctype": "Event Ticket Type", "title": "Normal"},
-        ]
-        for record in records:
-            frappe.get_doc({**record, "event": self.name}).insert(
-                ignore_permissions=True
-            )
-
     def general_admission_ticket_type(self):
+
+        if self.is_ticketed:
+            return
+
         if frappe.db.exists(
             "Event Ticket Type", {"event": self.name, "title": "General Admission"}
         ):
             return
 
-        if not self.is_ticketed:
-            general_admission = frappe.get_doc(
-                {
-                    "doctype": "Event Ticket Type",
-                    "event": self.name,
-                    "title": "General Admission",
-                    "price": 0,
-                }
-            )
-            general_admission.insert(ignore_permissions=True)
+        general_admission = frappe.get_doc(
+            {
+                "doctype": "Event Ticket Type",
+                "event": self.name,
+                "title": "General Admission",
+                "price": 0,
+                "company": self.company,
+            }
+        )
+        general_admission.insert(ignore_permissions=True)

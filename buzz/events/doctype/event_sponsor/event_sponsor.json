@@ -25,7 +25,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Event",
-   "options": "FE Event",
+   "options": "Buzz Event",
    "reqd": 1
   },
   {
@@ -75,7 +75,7 @@
  "image_field": "company_logo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-09 18:53:04.166283",
+ "modified": "2025-10-28 16:18:05.658346",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Sponsor",

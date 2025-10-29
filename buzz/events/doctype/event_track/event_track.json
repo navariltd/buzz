@@ -14,14 +14,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Event",
-   "options": "FE Event",
+   "options": "Buzz Event",
    "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-29 19:36:02.917560",
+ "modified": "2025-10-28 16:18:05.552522",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Event Track",

@@ -28,7 +28,7 @@ def get_columns() -> list[dict]:
 			"label": _("Event"),
 			"fieldname": "event",
 			"fieldtype": "Link",
-			"options": "FE Event",
+			"options": "Buzz Event",
 			"width": 200,
 		},
 		{
@@ -52,7 +52,7 @@ def get_data(filters: dict) -> list[dict]:
 		return [get_summary_for_event(event)]
 
 	data = []
-	events = frappe.db.get_all("FE Event", pluck="name")
+	events = frappe.db.get_all("Buzz Event", pluck="name")
 	for event in events:
 		summary = get_summary_for_event(event)
 		summary["event"] = event
