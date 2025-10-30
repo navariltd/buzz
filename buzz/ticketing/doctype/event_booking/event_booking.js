@@ -65,7 +65,7 @@ frappe.ui.form.on("Event Booking", {
 
 function set_mop(frm) {
 	if (!frm.doc.event || frm.doc.mode_of_payment) return;
-	frappe.db.get_value("FE Event", frm.doc.event, "mode_of_payment").then((r) => {
+	frappe.db.get_value("Buzz Event", frm.doc.event, "mode_of_payment").then((r) => {
 		if (r.message && r.message.mode_of_payment) {
 			frm.set_value("mode_of_payment", r.message.mode_of_payment);
 		}

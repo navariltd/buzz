@@ -25,9 +25,9 @@
  "public": 1,
  "quick_lists": [
   {
-   "document_type": "FE Event",
+   "document_type": "Buzz Event",
    "label": "Events this Month",
-   "quick_list_filter": "[[\"FE Event\",\"start_date\",\"Timespan\",\"this month\",false]]"
+   "quick_list_filter": "[[\"Buzz Event\",\"start_date\",\"Timespan\",\"this month\",false]]"
   }
  ],
  "roles": [],
@@ -54,7 +54,7 @@
    "color": "Grey",
    "doc_view": "New",
    "label": "Create New Event",
-   "link_to": "FE Event",
+   "link_to": "Buzz Event",
    "stats_filter": "[]",
    "type": "DocType"
   },
@@ -63,8 +63,8 @@
    "doc_view": "List",
    "format": "{} Published",
    "label": "Events",
-   "link_to": "FE Event",
-   "stats_filter": "[[\"FE Event\",\"is_published\",\"=\",1,false]]",
+   "link_to": "Buzz Event",
+   "stats_filter": "[[\"Buzz Event\",\"is_published\",\"=\",1,false]]",
    "type": "DocType"
   },
   {
@@ -88,7 +88,7 @@
    "doc_view": "List",
    "label": "Events Overview Report",
    "link_to": "Event Overview",
-   "report_ref_doctype": "FE Event",
+   "report_ref_doctype": "Buzz Event",
    "type": "Report"
   },
   {

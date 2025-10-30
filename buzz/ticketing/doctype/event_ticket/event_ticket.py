@@ -56,7 +56,7 @@ class EventTicket(Document):
 
 	def send_ticket_email(self):
 
-		event_doc = frappe.get_cached_doc("FE Event", self.event)
+		event_doc = frappe.get_cached_doc("Buzz Event", self.event)
 
 		ticket_type_doc = frappe.db.get_value(
 			"Event Ticket Type", self.ticket_type, ["title"]
