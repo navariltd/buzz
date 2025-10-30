@@ -116,7 +116,7 @@ class EventTicket(Document):
 		self.qr_code = qr_code_file.file_url
 
 
-	def make_qr_image_with_data(data: str) -> bytes:
+def make_qr_image_with_data(data: str) -> bytes:
 	import io
 
 	import qrcode
