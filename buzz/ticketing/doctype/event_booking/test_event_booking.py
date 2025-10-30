@@ -78,17 +78,10 @@ class IntegrationTestEventBooking(IntegrationTestCase):
 		self.assertEqual(test_booking.total_amount, 1100)
 
 	def test_total_calculation_with_taxes(self):
-<<<<<<< HEAD
-		test_event = frappe.get_doc("FE Event", {"route": "test-route"})
-
-		# Turn on GST for this test
-		event_settings = frappe.get_doc("Event Management Settings")
-=======
 		test_event = frappe.get_doc("Buzz Event", {"route": "test-route"})
 
 		# Turn on GST for this test
 		event_settings = frappe.get_doc("Buzz Settings")
->>>>>>> BuildWithHussain/main
 		event_settings.apply_gst_on_bookings = True
 		event_settings.gst_percentage = 18
 		event_settings.save()
@@ -120,11 +113,7 @@ class IntegrationTestEventBooking(IntegrationTestCase):
 		self.assertEqual(test_booking.total_amount, 1180)
 
 	def test_prevents_booking_if_tickets_unavailable(self):
-<<<<<<< HEAD
-		test_event = frappe.get_doc("FE Event", {"route": "test-route"})
-=======
 		test_event = frappe.get_doc("Buzz Event", {"route": "test-route"})
->>>>>>> BuildWithHussain/main
 		test_vip_ticket_type = frappe.get_doc(
 			{
 				"doctype": "Event Ticket Type",
