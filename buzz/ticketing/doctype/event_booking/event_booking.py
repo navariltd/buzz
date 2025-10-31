@@ -32,10 +32,11 @@ class EventBooking(Document):
         mode_of_payment: DF.Link | None
         net_amount: DF.Currency
         payment_gateway: DF.Link | None
+        primary_contact: DF.Data
         tax_amount: DF.Currency
         tax_percentage: DF.Percent
         total_amount: DF.Currency
-        user: DF.Link
+        user: DF.Link | None
     # end: auto-generated types
 
     def validate(self):
@@ -46,6 +47,13 @@ class EventBooking(Document):
         self.apply_taxes_if_applicable()
         self.customer = self.make_customer()
         self.set_missing_values()
+        self.link_user()
+
+    def link_user(self):
+        if not self.user:
+            user = frappe.db.get_value("User", self.primary_contact, "name")
+            if user:
+                self.user = user
 
     def set_missing_values(self):
         if not self.payment_gateway:
