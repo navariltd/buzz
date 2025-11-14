@@ -113,7 +113,7 @@ def make_payment_request(customer, event_booking, phone_number=None):
             )
         )
 
-    return payment_request
+    return payment_request, invoice
 
 
 def make_invoice(event_booking, customer):
