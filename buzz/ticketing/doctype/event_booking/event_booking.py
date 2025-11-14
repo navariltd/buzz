@@ -20,7 +20,9 @@ class EventBooking(Document):
     from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
-        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import EventBookingAttendee
+        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
+            EventBookingAttendee,
+        )
         from frappe.types import DF
 
         amended_from: DF.Link | None
@@ -177,13 +179,11 @@ class EventBooking(Document):
                 "mobile": user.phone,
             }
         )
-   
 
         # Try to find customer by email_id
         customer_name = frappe.db.get_value(
             "Customer", {"email_id": user.email}, "name"
         )
-
 
         if self.customer:
             customer = frappe.get_doc("Customer", self.customer)
@@ -192,7 +192,6 @@ class EventBooking(Document):
             customer = frappe.get_doc("Customer", customer_name)
             return customer.name
         else:
-            print("Creating new customer")
             customer = create_customer(user_details)
             customer = frappe.get_doc("Customer", customer)
         return customer.name
@@ -203,7 +202,11 @@ class EventBooking(Document):
 
             phone_number = phone_number
             customer = frappe.get_doc("Customer", self.customer)
-            payment_request = make_payment_request(customer, self, phone_number)
+            payment_request, invoice = make_payment_request(
+                customer, self, phone_number
+            )
+
+            return payment_request, invoice
 
         except Exception as e:
             frappe.log_error(frappe.get_traceback(), _("Payment Initialization Failed"))
@@ -212,8 +215,6 @@ class EventBooking(Document):
                     "There was an error in processing your payment. Please contact support."
                 )
             )
-
-        return payment_request
 
     @frappe.whitelist()
     def generate_invoice(self):
