@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-
+from frappe.utils import random_string
 from buzz.payments import mark_payment_as_received
 from buzz.payment import (
     make_invoice,
@@ -196,14 +196,19 @@ class EventBooking(Document):
             customer = frappe.get_doc("Customer", customer)
         return customer.name
 
+    def generate_pr_token(self) -> str:
+        return random_string(32)
+
     @frappe.whitelist()
-    def initialize_payment(self, phone_number=None):
+    def initialize_payment(self, phone_number=None, payment_token=False):
+        if payment_token:
+            pr_token = self.generate_pr_token()
         try:
 
             phone_number = phone_number
             customer = frappe.get_doc("Customer", self.customer)
             payment_request, invoice = make_payment_request(
-                customer, self, phone_number
+                customer, self, phone_number, pr_token
             )
 
             return payment_request, invoice
