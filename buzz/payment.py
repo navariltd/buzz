@@ -45,7 +45,9 @@ def create_customer(user_details):
     return customer.name
 
 
-def make_payment_request(customer, event_booking, phone_number=None):
+def make_payment_request(
+    customer, event_booking, phone_number=None, payment_token=None
+):
     try:
         invoice = None
         if not frappe.db.exists(
@@ -92,6 +94,7 @@ def make_payment_request(customer, event_booking, phone_number=None):
                 "message": _("Please pay {0} {1} to renew your event booking.").format(
                     event_booking.currency, event_booking.total_amount
                 ),
+                "payment_token": payment_token,
             }
         )
 
