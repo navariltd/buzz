@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-20 07:39:36.067686",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "question_type",
+  "question_id",
+  "is_required",
+  "help_text",
+  "column_break_fjfh",
+  "question",
+  "options"
+ ],
+ "fields": [
+  {
+   "fieldname": "question_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Question Type",
+   "options": "Text\nSelect\nMultiSelect\nRating\nDate\nYes/No\nEmail\nPhone",
+   "reqd": 1
+  },
+  {
+   "description": "Unique code or number for this question, e.g., Q1, Q2",
+   "fieldname": "question_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Question ID",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Required"
+  },
+  {
+   "description": "Guidance for applicants on how to answer.",
+   "fieldname": "help_text",
+   "fieldtype": "Small Text",
+   "label": "Help Text"
+  },
+  {
+   "fieldname": "column_break_fjfh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "question",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Question",
+   "reqd": 1
+  },
+  {
+   "fieldname": "options",
+   "fieldtype": "Small Text",
+   "label": "Options"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-20 07:51:31.550173",
+ "modified_by": "Administrator",
+ "module": "Buzz",
+ "name": "Event Registration Question",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

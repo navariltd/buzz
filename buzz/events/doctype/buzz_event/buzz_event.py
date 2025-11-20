@@ -12,11 +12,10 @@ class BuzzEvent(Document):
     from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
-        from buzz.events.doctype.event_featured_speaker.event_featured_speaker import (
-            EventFeaturedSpeaker,
-        )
+        from buzz.events.doctype.event_featured_speaker.event_featured_speaker import EventFeaturedSpeaker
         from buzz.events.doctype.schedule_item.schedule_item import ScheduleItem
         from frappe.types import DF
+        from onerc_vmms.volunteer_and_member_management.doctype.event_registration_question.event_registration_question import EventRegistrationQuestion
 
         about: DF.TextEditor | None
         banner_image: DF.AttachImage | None
@@ -25,6 +24,7 @@ class BuzzEvent(Document):
         end_date: DF.Date | None
         end_time: DF.Time | None
         event_access: DF.Literal["", "Public", "Private", "Members Only"]
+        event_registration_questions: DF.Table[EventRegistrationQuestion]
         external_registration_page: DF.Check
         featured_speakers: DF.Table[EventFeaturedSpeaker]
         host: DF.Link
