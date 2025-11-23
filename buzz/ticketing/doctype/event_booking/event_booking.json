@@ -5,6 +5,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_section",
   "event",
   "company",
   "column_break_cjxu",
@@ -23,7 +24,9 @@
   "total_amount",
   "currency",
   "section_break_sdfp",
-  "amended_from"
+  "amended_from",
+  "event_form_response_tab",
+  "responses"
  ],
  "fields": [
   {
@@ -150,6 +153,23 @@
    "fieldtype": "Data",
    "label": "Primary Contact",
    "reqd": 1
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "description": "This show the responses from the initial questions from the event",
+   "fieldname": "event_form_response_tab",
+   "fieldtype": "Tab Break",
+   "label": "Event Form Response"
+  },
+  {
+   "fieldname": "responses",
+   "fieldtype": "Table",
+   "label": "Responses",
+   "options": "Event Registration Response"
   }
  ],
  "grid_page_length": 50,
@@ -173,7 +193,7 @@
    "link_fieldname": "event_booking"
   }
  ],
- "modified": "2025-10-31 17:39:38.739804",
+ "modified": "2025-11-23 19:07:20.958731",
  "modified_by": "Administrator",
  "module": "Ticketing",
  "name": "Event Booking",
