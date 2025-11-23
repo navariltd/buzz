@@ -20,9 +20,8 @@ class EventBooking(Document):
     from typing import TYPE_CHECKING
 
     if TYPE_CHECKING:
-        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import (
-            EventBookingAttendee,
-        )
+        from buzz.ticketing.doctype.event_booking_attendee.event_booking_attendee import EventBookingAttendee
+        from buzz.ticketing.doctype.event_registration_response.event_registration_response import EventRegistrationResponse
         from frappe.types import DF
 
         amended_from: DF.Link | None
@@ -35,6 +34,7 @@ class EventBooking(Document):
         net_amount: DF.Currency
         payment_gateway: DF.Link | None
         primary_contact: DF.Data
+        responses: DF.Table[EventRegistrationResponse]
         tax_amount: DF.Currency
         tax_percentage: DF.Percent
         total_amount: DF.Currency
