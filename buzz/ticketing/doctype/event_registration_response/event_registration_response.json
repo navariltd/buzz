@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-23 12:37:42.285378",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "question_id",
+  "question",
+  "response"
+ ],
+ "fields": [
+  {
+   "description": "Unique code or number for this question, e.g., Q1, Q2",
+   "fieldname": "question_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Question ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "question",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Question",
+   "reqd": 1
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Response"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-23 19:32:25.779579",
+ "modified_by": "Administrator",
+ "module": "Ticketing",
+ "name": "Event Registration Response",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
