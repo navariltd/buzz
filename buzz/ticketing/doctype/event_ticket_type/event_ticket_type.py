@@ -6,6 +6,27 @@ from frappe.model.document import Document
 
 
 class EventTicketType(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+
+		auto_unpublish_after: DF.Date | None
+		company: DF.Data
+		currency: DF.Link
+		event: DF.Link
+		is_published: DF.Check
+		linked_item: DF.Link | None
+		max_tickets_available: DF.Int
+		name: DF.Int | None
+		price: DF.Currency
+		ticket_capacity: DF.Int
+		ticket_type: DF.Literal["", "Individual", "Group"]
+		title: DF.Data
+	# end: auto-generated types
     # begin: auto-generated types
     # This code is auto-generated. Do not modify anything in this block.
 
