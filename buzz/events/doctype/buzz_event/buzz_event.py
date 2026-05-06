@@ -14,14 +14,14 @@ class BuzzEvent(Document):
     if TYPE_CHECKING:
         from buzz.events.doctype.event_featured_speaker.event_featured_speaker import EventFeaturedSpeaker
         from buzz.events.doctype.schedule_item.schedule_item import ScheduleItem
+        from buzz.ticketing.doctype.event_registration_question.event_registration_question import EventRegistrationQuestion
         from frappe.types import DF
-        from onerc_vmms.volunteer_and_member_management.doctype.event_registration_question.event_registration_question import EventRegistrationQuestion
 
         about: DF.TextEditor | None
         banner_image: DF.AttachImage | None
         category: DF.Link
         company: DF.Link
-        end_date: DF.Date | None
+        end_date: DF.Date
         end_time: DF.Time | None
         event_access: DF.Literal["", "Public", "Private", "Members Only"]
         event_registration_questions: DF.Table[EventRegistrationQuestion]
@@ -84,6 +84,7 @@ class BuzzEvent(Document):
                 "title": "General Admission",
                 "price": 0,
                 "company": self.company,
+                "ticket_type": "Individual",
             }
         )
         general_admission.insert(ignore_permissions=True)
