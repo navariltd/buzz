@@ -97,7 +97,8 @@
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date"
+   "label": "End Date",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_zukm",
@@ -341,7 +342,7 @@
    "link_fieldname": "event"
   }
  ],
- "modified": "2025-11-20 07:45:23.072566",
+ "modified": "2026-05-06 08:17:35.193875",
  "modified_by": "Administrator",
  "module": "Events",
  "name": "Buzz Event",
